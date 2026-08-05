@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecosistema.local/schemas/recurso-documental-humano-maquina-v3.json",
+  "title": "Representación documental humana y de máquina",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "identidad",
+    "control_revision",
+    "fuentes",
+    "contenido",
+    "procesamiento",
+    "calidad"
+  ],
+  "properties": {
+    "schema_version": {"const": 3},
+    "identidad": {
+      "type": "object",
+      "required": ["nombre_base_exacto", "contexto_logico"],
+      "properties": {
+        "nombre_base_exacto": {"type": "string", "minLength": 1},
+        "contexto_logico": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "control_revision": {
+      "type": "object",
+      "required": ["revision_canonica", "por_revision"],
+      "properties": {
+        "revision_canonica": {"type": "string", "minLength": 1},
+        "por_revision": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    },
+    "fuentes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/fuente"}
+    },
+    "contenido": {
+      "type": "object",
+      "required": ["fuente_principal", "texto"],
+      "properties": {
+        "fuente_principal": {"type": ["string", "null"]},
+        "texto": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "procesamiento": {
+      "type": "object",
+      "required": ["skill", "version", "generado_en", "originales_modificados"],
+      "properties": {
+        "skill": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "generado_en": {"type": "string", "minLength": 1},
+        "originales_modificados": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "calidad": {
+      "type": "object",
+      "required": [
+        "errores_criticos",
+        "advertencias",
+        "revision_canonica",
+        "fuentes_principales_por_revision",
+        "fuentes_legibles",
+        "fuentes_total"
+      ],
+      "properties": {
+        "errores_criticos": {"type": "array", "items": {"type": "string"}},
+        "advertencias": {"type": "array", "items": {"type": "string"}},
+        "revision_canonica": {"type": "string", "minLength": 1},
+        "fuentes_principales_por_revision": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "fuentes_legibles": {"type": "integer", "minimum": 0},
+        "fuentes_total": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "fuente": {
+      "type": "object",
+      "required": [
+        "ruta_relativa",
+        "nombre_base_exacto",
+        "nombre_archivo",
+        "extension",
+        "familia_documental",
+        "rol",
+        "revision_detectada",
+        "fecha_lectura",
+        "hash",
+        "criterio_de_seleccion",
+        "errores_de_lectura",
+        "advertencias_de_lectura"
+      ],
+      "properties": {
+        "ruta_relativa": {"type": "string", "minLength": 1},
+        "nombre_base_exacto": {"type": "string", "minLength": 1},
+        "nombre_archivo": {"type": "string", "minLength": 1},
+        "extension": {"type": "string", "pattern": "^\\.[a-z0-9]+$"},
+        "familia_documental": {
+          "enum": ["EXCEL", "WORD", "PDF", "CAD_EDITABLE", "IMAGEN"]
+        },
+        "rol": {"enum": ["principal", "asociada"]},
+        "revision_detectada": {"type": "string", "minLength": 1},
+        "fecha_lectura": {"type": "string", "minLength": 1},
+        "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "criterio_de_seleccion": {"type": ["string", "null"]},
+        "errores_de_lectura": {"type": "array", "items": {"type": "string"}},
+        "advertencias_de_lectura": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

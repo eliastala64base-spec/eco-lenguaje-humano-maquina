@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecosistema.local/schemas/lenguaje-humano-maquina-lateral-record-v2.json",
+  "title": "Registro JSONL lateral Lenguaje Humano–Máquina",
+  "type": "object",
+  "required": ["record_type"],
+  "properties": {
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "manifest", "source_metadata", "integrity", "file_role", "format_information",
+        "structure", "page", "section", "paragraph", "heading", "table", "sheet", "cell",
+        "formula", "chart", "slide", "image", "drawing", "layer", "block", "entity",
+        "bim_element", "gis_feature", "audio_segment", "video_segment", "subtitle",
+        "transcript_segment", "archive_member", "email_message", "attachment",
+        "database_table", "database_field", "database_relation", "code_file", "code_symbol",
+        "dependency", "comment", "content", "technical_data", "relation", "summary",
+        "keywords", "rights_observed", "security", "comparison_features", "quality",
+        "warning", "warnings", "end"
+      ]
+    },
+    "schema_name": {"const": "lenguaje_humano_maquina"},
+    "schema_version": {"const": 2},
+    "processing_mode": {"const": "RECURSO_UNICO_LATERAL"},
+    "source_filename": {"type": "string", "minLength": 1},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_size_bytes": {"type": "integer", "minimum": 0},
+    "short_description": {"type": "string", "minLength": 1},
+    "brief_description": {"type": "string", "minLength": 1},
+    "long_description": {"type": "string", "minLength": 1},
+    "synonyms": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "role": {
+      "enum": [
+        "FUENTE_PRIMARIA", "MANIFESTACION_ASOCIADA", "ARCHIVO_AUXILIAR",
+        "DERIVADO_GENERADO", "RESPALDO_COPIA", "CONTENEDOR", "BASE_DATOS",
+        "CODIGO_FUENTE", "EJECUTABLE_ACTIVO", "TEMPORAL_CACHE", "DESCONOCIDO"
+      ]
+    },
+    "code": {"type": "string", "minLength": 1},
+    "severity": {"enum": ["BAJO", "MEDIO", "ALTO", "CRITICO"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"record_type": {"const": "manifest"}}},
+      "then": {"required": ["schema_name", "schema_version", "source_filename", "source_relative_path", "generated_at", "generated_by", "processing_mode"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "source_metadata"}}},
+      "then": {"required": ["source_filename", "source_relative_path", "source_size_bytes", "source_modified_at"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "integrity"}}},
+      "then": {"required": ["algorithm", "source_sha256", "source_size_bytes"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "file_role"}}},
+      "then": {"required": ["role", "basis", "classification_is_final"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "summary"}}},
+      "then": {"required": ["text", "short_description", "brief_description", "long_description", "synonyms", "generation_method"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "warning"}}},
+      "then": {"required": ["code", "description", "severity"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "end"}}},
+      "then": {"required": ["status", "source_sha256"]}
+    }
+  ],
+  "additionalProperties": true
+}

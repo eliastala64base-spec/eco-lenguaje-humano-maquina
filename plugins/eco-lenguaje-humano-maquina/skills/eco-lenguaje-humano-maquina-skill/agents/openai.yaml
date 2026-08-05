@@ -1,0 +1,14 @@
+interface:
+  display_name: Lenguaje Humano–Máquina
+  short_description: Derivados humanos y JSONL sin tocar originales.
+  default_prompt: Usa $eco-lenguaje-humano-maquina-skill en esta ruta, determina el
+    modo controlado o lateral, prevalida y conserva intactos los originales.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

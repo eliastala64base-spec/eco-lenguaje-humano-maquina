@@ -1,0 +1,17 @@
+{
+  "name": "ecosistema-virtual",
+  "plugins": [
+    {
+      "name": "eco-lenguaje-humano-maquina",
+      "source": {
+        "source": "local",
+        "path": "./plugins/eco-lenguaje-humano-maquina"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
