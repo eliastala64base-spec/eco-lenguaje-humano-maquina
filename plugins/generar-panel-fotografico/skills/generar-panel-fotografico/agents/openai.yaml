@@ -1,0 +1,8 @@
+Exit code: 0
+Wall time: 0.3 seconds
+Output:
+interface:
+  display_name: "Generar panel fotográfico"
+  short_description: "Prepara paneles fotográficos trazables"
+  default_prompt: "Usa $generar-panel-fotografico para preparar un panel desde un catálogo y una plantilla sin modificar las fuentes."
+
