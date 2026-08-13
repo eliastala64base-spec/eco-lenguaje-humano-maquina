@@ -339,4 +339,1053 @@ def extract_docx(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any],
         if any(name.endswith("vbaProject.bin") for name in names):
             warnings.append(warning("MACRO_NO_EJECUTADA", "Se detect√≥ una macro que no fue ejecutada."))
     full_text = "\n".join(texts)
-    metr◊çÙ⁄⁄$z{-ÆÈ‹j◊ù˜&÷Bró÷"¬""¬"22W7G'V7GW&"¬""¿¢–¢ñbFV6ÜÊñ6√†¢f˜"∂Wí¬f«VRñ‚FV6ÜÊñ6¬ÊóFV◊2Çì†¢ñb∂Wí“'&V6˜&E˜GóR"ÊBf«VRó2Ê˜BÊˆÊS†¢∆ñÊW2ÊVÊBÜb"“∂∂Wó”¢∂ß6ˆ‚ÊGV◊2áf«VR¬VÁ7W&Uˆ66ñì‘f«6Ró÷"ê¢V«6S†¢∆ñÊW2ÊVÊBÇ"“6ñ‚W7G'V7GW&Fñ6ñˆÊ¬WáG&:÷&∆RFRf˜&÷FWFW&÷ñÊó7F‚"ê¢∆ñÊW2ÊWáFVÊBÖ≤""¬"22FF˜2L:ñ6Êñ6˜2&V∆WfÁFW2"¬""¬b"“F÷;Û¢∂÷WFFF≤w6˜W&6U˜6ó¶Uˆ'óFW2u◊÷'óFW2"¬b"“4Ñ”#Sc¢∂ñÁFVw&óGï≤w6˜W&6U˜6Ü#Sbu◊÷"¬""¬"226ñÏ;6Êñ÷˜2"¬"%“ê¢∆ñÊW2ÊWáFVÊBÜb"“∑f«VW“"f˜"f«VRñ‚7V÷÷'íÊvWBÇ'7ñÊˆÁñ◊2"¬µ“íê¢ñbÊ˜B7V÷÷'íÊvWBÇ'7ñÊˆÁñ◊2"ì†¢∆ñÊW2ÊVÊBÇ"“6ñ‚6ñÏ;6Êñ÷˜27W7FVÁFF˜2‚"ê¢∆ñÊW2ÊWáFVÊBÖ≤""¬"22∆'&26∆fR"¬"%“ê¢∆ñÊW2ÊWáFVÊBÜb"“∑f«VW“"f˜"f«VRñ‚∂Wóv˜&G2ÊvWBÇ'f«VW2"¬µ“íê¢ñbÊ˜B∂Wóv˜&G2ÊvWBÇ'f«VW2"ì†¢∆ñÊW2ÊVÊBÇ"“6ñ‚∆'&26∆fRfW&ñfñ6&∆W2‚"ê¢∆ñÊW2ÊWáFVÊBÖ≤""¬"22&V∆6ñˆÊW2ˆ'6W'fF2"¬"%“ê¢ñb&V∆FñˆÁ3†¢∆ñÊW2ÊWáFVÊBÜb"“∂óFV“ÊvWBÇw&V∆FñˆÂ˜GóRró”¢∂óFV“ÊvWBÇwF&vWEˆfñ∆VÊ÷Rró“á∂óFV“ÊvWBÇw7FGW2r¬tÙ%4U%dDró“í"f˜"óFV“ñ‚&V∆FñˆÁ2ê¢V«6S†¢∆ñÊW2ÊVÊBÇ"“ÊÚ6R6ˆÊfó&÷&ˆ‚&V∆6ñˆÊW2WFˆ‹:Fñ62‚"ê¢∆ñÊW2ÊWáFVÊBÖ≤""¬"22∆ñ÷óF6ñˆÊW2FRWáG&66ú;6‚"¬"%“ê¢ñbv&ÊñÊw3†¢∆ñÊW2ÊWáFVÊBÜb"“∂óFV’≤v6ˆFRu◊÷¢∂óFV’≤vFW67&óFñˆ‚u◊“"f˜"óFV“ñ‚v&ÊñÊw2ê¢V«6S†¢∆ñÊW2ÊVÊBÇ"“6ñ‚∆ñ÷óF6ñˆÊW2&Vvó7G&F2‚"ê¢∆ñÊW2ÊWáFVÊBÖ∞¢""¬"226∆ñFB"¬""¬b"“6ˆ&W'GW&¢∑V∆óGï≤vWáG&7FñˆÂ˜7FGW2u◊÷"¿¢b"“6ˆÊfñÁ¶¢∑V∆óGï≤vWáG&7FñˆÂˆ6ˆÊfñFVÊ6Ru◊÷"¬b"“GfW'FVÊ6ñ3¢∂∆V‚áv&ÊñÊw2ó÷"¿¢b"“&Wfó6ú;6‚áV÷Ê¢≤u$T4Ù‘T‰DDrñbV∆óGï≤váV÷Â˜&WfñWu˜&V6ˆ÷÷VÊFVBu“V«6Rtı4îÙ‰¬w÷"¿¢""¬"22,;7Üñ÷WF"¬""¿¢$V¬&V7W'6ÚW7L:&W&FÚ&V‚&ˆ6W6Ú˜7FW&ñ˜"FR6∆6ñfñ66ú;6‚RñÊ6˜'˜&6ú;6‚T4ı4ï5DT‘‚W7FRFW&ófFÚÊÚFV6ñFR7RFW7FñÊÚFVfñÊóFófÚ‚"¬""¿¢“ê¢&WGW&‚%∆‚"Ê¶ˆñ‚Ü∆ñÊW2ê††¶FVb6Ü#Se˜FWáBá6˜W&6S¢FÇí”‚7G#†¢6˜W&6UˆÜ6Ç“6Ü#Seˆfñ∆Rá6˜W&6Rê¢&WGW&‚%∆‚"Ê¶ˆñ‚Ö∞¢b"266ÜV÷ˆÊ÷S¢µ44ÑT‘Ù‰‘W“"¿¢b"266ÜV÷˜fW'6ñˆ„¢µ44ÑT‘ıdU%4îÙÁ“"¿¢"2'Fñf7E˜GóS¢ñÁFVw&óGí"¿¢b"26˜W&6Uˆfñ∆VÊ÷S¢∂ß6ˆ‚ÊGV◊2á6˜W&6RÊÊ÷R¬VÁ7W&Uˆ66ñì‘f«6Ró“"¿¢b"26˜W&6U˜6ó¶Uˆ'óFW3¢∑6˜W&6RÁ7FBÇíÁ7E˜6ó¶W“"¿¢b"26˜W&6U˜6Ü#Sc¢∑6˜W&6UˆÜ6á“"¿¢b'∑6˜W&6UˆÜ6á“∑6˜W&6RÊÊ÷W“"¿¢""¿¢“ê††¶FVbvÁG5ˆ÷&∂F˜v‚á&ˆ∆S¢7G"¬&V6˜&G3¢∆ó7E∂Fñ7E∑7G"¬Áï’“í”‚&ˆˆ√†¢ñb&ˆ∆Rñ‚≤$eTTÂDUı$î‘$î"¬$‘‰îdU5D4îÙÂÙ4Ù4îD"¬$$4UÙDDı2"¬$4ÙDîtıÙeTTÂDR'”†¢&WGW&‚G'VP¢ñb&ˆ∆Rñ‚≤$$4ÑïdıÙUÑîƒî""¬$DU$ïdDıÙtT‰U$DÚ'”†¢6ˆ◊&ó6ˆ‚“fñÊE˜&V6˜&Bá&V6˜&G2¬&6ˆ◊&ó6ˆÂˆfVGW&W2"ê¢&WGW&‚&ˆˆ¬Ü6ˆ◊&ó6ˆ‚ÊvWBÇ'FWáEˆ∆VÊwFÇ"íê¢&WGW&‚f«6P††¶FVb˜WGWE˜Fá2á6˜W&6S¢FÇí”‚Fñ7E∑7G"¬FÖ”†¢&WGW&‚∞¢&ß6ˆÊ¬#¢6˜W&6RÁvóFÖˆÊ÷Rá6˜W&6RÊÊ÷R≤"Êß6ˆÊ¬"í¿¢&÷&∂F˜v‚#¢6˜W&6RÁvóFÖˆÊ÷Rá6˜W&6RÊÊ÷R≤"Ê÷B"í¿¢'6Ü#Sb#¢6˜W&6RÁvóFÖˆÊ÷Rá6˜W&6RÊÊ÷R≤"Á6Ü#Sb"í¿¢–††¶FVbf∆ñFFUˆ'VÊF∆Rá7FvS¢FÇ¬6˜W&6S¢FÇ¬ñÊ6«VFUˆß6ˆÊ√¢&ˆˆ¬¬ñÊ6«VFUˆ÷&∂F˜v„¢&ˆˆ¬í”‚ÊˆÊS†¢Fá2“˜WGWE˜Fá2á6˜W&6Rê¢7FvVEˆß6ˆÊ¬“7FvRÚFá5≤&ß6ˆÊ¬%“ÊÊ÷P¢7FvVEˆ÷B“7FvRÚFá5≤&÷&∂F˜v‚%“ÊÊ÷P¢7FvVE˜6Ü“7FvRÚFá5≤'6Ü#Sb%“ÊÊ÷P¢ñbÊ˜B7FvVE˜6ÜÊó5ˆfñ∆RÇí˜"7FvVE˜6ÜÁ&VE˜FWáBÜVÊ6ˆFñÊs“'WFb”Ç"í“6Ü#Se˜FWáBá6˜W&6Rì†¢&ó6Rf«VTW'&˜"Ç$&6ÜófÚ4Ñ”#SbñÁl:∆ñFÚÚÊÚ6˜'&W7ˆÊFR¬˜&ñvñÊ¬‚"ê¢ñbñÊ6«VFUˆß6ˆÊ√†¢&V6˜&G2“f∆ñFFUˆß6ˆÊ¬á7FvVEˆß6ˆÊ¬¬6˜W&6Rê¢ñbñÊ6«VFUˆ÷&∂F˜v„†¢WáV7FVB“&VÊFW%ˆ÷&∂F˜v‚á&V6˜&G2¬6Ü#Seˆfñ∆Rá7FvVEˆß6ˆÊ¬íê¢ñb7FvVEˆ÷BÁ&VE˜FWáBÜVÊ6ˆFñÊs“'WFb”Ç"í“WáV7FVC†¢&ó6Rf«VTW'&˜"Ç$V¬÷&∂F˜v‚ÊÚgVRvVÊW&FÚWÜ6«W6óf÷VÁFRFW6FRV¬•4Ù‰¬f∆ñFFÚ‚"ê¢V∆ñb7FvVEˆ÷BÊWÜó7G2Çì†¢&ó6Rf«VTW'&˜"Ç%6RvVÊW,;2÷&∂F˜v‚ÊÚWF˜&ó¶FÚ&W7FR&ˆ¬‚"ê¢V«6S†¢ñb7FvVEˆß6ˆÊ¬ÊWÜó7G2Çí˜"7FvVEˆ÷BÊWÜó7G2Çì†¢&ó6Rf«VTW'&˜"Ç$V¬&ˆ¬6ˆ∆ÚWF˜&ó¶4Ñ”#Sb‚"ê††¶FVbV&∆ó6Öˆ'VÊF∆Rá7FvS¢FÇ¬6˜W&6S¢FÇ¬FW6ó&VC¢6WE∑7G%“í”‚ÊˆÊS†¢Fá2“˜WGWE˜Fá2á6˜W&6Rê¢÷ÊvVB“∂∂Wì¢f«VRf˜"∂Wí¬f«VRñ‚Fá2ÊóFV◊2Çó–¢f˜"FW7FñÊFñˆ‚ñ‚÷ÊvVBÁf«VW2Çì†¢ñbFW7FñÊFñˆ‚Êó5˜7ñ÷∆ñÊ≤Çí˜"ÜFW7FñÊFñˆ‚ÊWÜó7G2ÇíÊBÊ˜BFW7FñÊFñˆ‚Êó5ˆfñ∆RÇíì†¢&ó6Rf«VTW'&˜"Üb$6ˆ∆ó6ú;6‚ñÁ6VwW&V‚FW&ófFÚ∆FW&√¢∂FW7FñÊFñˆÁ“"ê¢&6∑W“FÇáFV◊fñ∆RÊ÷∂GFV◊á&VfóÉ÷b"Á∑6˜W&6RÊÊ÷W“Ê∆Ü“÷&6∑W“"¬Fó#◊6˜W&6RÁ&VÁBíê¢÷˜fVEˆˆ∆C¢∆ó7E∑GW∆UµFÇ¬FÖ’““µ–¢V&∆ó6ÜVC¢∆ó7EµFÖ““µ–¢∂VWˆ&6∑W“f«6P¢G'ì†¢f˜"∂Wí¬FW7FñÊFñˆ‚ñ‚÷ÊvVBÊóFV◊2Çì†¢ñbFW7FñÊFñˆ‚ÊWÜó7G2Çì†¢ˆ∆B“&6∑WÚFW7FñÊFñˆ‚ÊÊ÷P¢˜2Á&W∆6RÜFW7FñÊFñˆ‚¬ˆ∆Bê¢÷˜fVEˆˆ∆BÊVÊBÇÜˆ∆B¬FW7FñÊFñˆ‚íê¢f˜"∂Wíñ‚Ç&ß6ˆÊ¬"¬&÷&∂F˜v‚"¬'6Ü#Sb"ì†¢ñb∂WíÊ˜Bñ‚FW6ó&VC†¢6ˆÁFñÁVP¢7FvVB“7FvRÚFá5∂∂Wï“ÊÊ÷P¢˜2Á&W∆6Rá7FvVB¬Fá5∂∂Wï“ê¢V&∆ó6ÜVBÊVÊBáFá5∂∂Wï“ê¢WÜ6WBWÜ6WFñˆ‚2V&∆ó6ÖˆW'&˜#†¢f˜"FW7FñÊFñˆ‚ñ‚V&∆ó6ÜVC†¢ñbFW7FñÊFñˆ‚ÊWÜó7G2Çì†¢FW7FñÊFñˆ‚ÁVÊ∆ñÊ≤Çê¢&W7F˜&UˆW'&˜'2“µ–¢f˜"ˆ∆B¬FW7FñÊFñˆ‚ñ‚&WfW'6VBÜ÷˜fVEˆˆ∆Bì†¢ñbˆ∆BÊWÜó7G2Çì†¢G'ì†¢˜2Á&W∆6RÜˆ∆B¬FW7FñÊFñˆ‚ê¢WÜ6WBWÜ6WFñˆ‚2&W7F˜&UˆW'&˜#†¢&W7F˜&UˆW'&˜'2ÊVÊBÜb'∂FW7FñÊFñˆÁ”¢∑&W7F˜&UˆW'&˜'“"ê¢ñb&W7F˜&UˆW'&˜'3†¢∂VWˆ&6∑W“G'VP¢&ó6R'VÁFñ÷TW'&˜"Ä¢$f∆Ã;2∆V&∆ñ66ú;6‚∆FW&¬í∆&W7FW&6ú;6‚ÊÚgVR6ˆ◊∆WF≤ ¢b&∆˜2FW&ófF˜2&V7WW&&∆W2W&÷ÊV6V‚V‚∂&6∑W”¢≤s≤rÊ¶ˆñ‚á&W7F˜&UˆW'&˜'2ó“ ¢íg&ˆ“V&∆ó6ÖˆW'&˜ ¢&ó6RV&∆ó6ÖˆW'&˜ ¢fñÊ∆«ì†¢ñbÊ˜B∂VWˆ&6∑W†¢6áWFñ¬Á&◊G&VRÜ&6∑W¬ñvÊ˜&UˆW'&˜'3’G'VRê††¶FVb∆ˆEˆVÁ&ñ6Ü÷VÁBáFÉ¢FÇ¬ÊˆÊRí”‚Fñ7E∑7G"¬Áï”†¢ñbFÇó2ÊˆÊS†¢&WGW&‚∑–¢f«VR“ß6ˆ‚Ê∆ˆG2áFÇÁ&VE˜FWáBÜVÊ6ˆFñÊs“'WFb”Ç"íê¢ñbÊ˜Bó6ñÁ7FÊ6Ráf«VR¬Fñ7Bì†¢&ó6Rf«VTW'&˜"Ç$V¬VÁ&óVV6ñ÷ñVÁFÚîFV&R6W"V‚ˆ&¶WFÚ˜"'WF&V∆Fóf‚"ê¢&WGW&‚f«VP††¶FVb&W&UˆFW67&óF˜'2áF&vWC¢FÇí”‚GW∆UµFÇ¬∆ó7E∂Fñ7E∑7G"¬Áï’’”†¢&ˆ˜B“F&vWBñbF&vWBÊó5ˆFó"ÇíV«6RF&vWBÁ&VÁ@¢FW67&óF˜'2“µ–¢f˜"FÇñ‚óFW%˜6˜W&6W2áF&vWBì†¢&ˆ∆R¬&6ó2“&V∆ñ÷ñÊ'ï˜&ˆ∆RáFÇê¢FñvW7B“6Ü#Seˆfñ∆RáFÇê¢FW67&óF˜'2ÊVÊBá≤'FÇ#¢FÇ¬&Ü6Ç#¢FñvW7B¬'6ó¶R#¢FÇÁ7FBÇíÁ7E˜6ó¶R¬'&ˆ∆R#¢&ˆ∆R¬&&6ó2#¢&6ó2¬'7FV“#¢FÇÁ7FV“¬&WáFVÁ6ñˆ‚#¢FÇÁ7VffóÇÊ∆˜vW"Çó“ê¢'ïˆÜ6É¢Fñ7E∑7G"¬∆ó7E∂Fñ7E∑7G"¬Áï’’““FVfV«FFñ7BÜ∆ó7Bê¢f˜"óFV“ñ‚FW67&óF˜'3†¢'ïˆÜ6Ö∂óFV’≤&Ü6Ç%’“ÊVÊBÜóFV“ê¢f˜"óFV◊2ñ‚'ïˆÜ6ÇÁf«VW2Çì†¢ñb∆V‚ÜóFV◊2í‚†¢f˜"GW∆ñ6FRñ‚6˜'FVBÜóFV◊2¬∂Wì÷∆÷&FóFV”¢óFV’≤'FÇ%“Á&V∆FófU˜FÚá&ˆ˜BíÊ5˜˜6óÇÇíï≥•”†¢GW∆ñ6FU≤'&ˆ∆R%““%$U5ƒDıÙ4ıî ¢GW∆ñ6FU≤&&6ó2%““$EUƒî4DıÙUÑ5Dıı4Ñ#Sb ¢'ï˜7FV”¢Fñ7E∑GW∆UµFÇ¬7G%“¬∆ó7E∂Fñ7E∑7G"¬Áï’’““FVfV«FFñ7BÜ∆ó7Bê¢f˜"óFV“ñ‚FW67&óF˜'3†¢'ï˜7FV’≤ÜóFV’≤'FÇ%“Á&VÁB¬óFV’≤'7FV“%“ï“ÊVÊBÜóFV“ê¢f˜"óFV◊2ñ‚'ï˜7FV“Áf«VW2Çì†¢FV6ÜÊñ6¬“ÊWáBÇÜóFV“f˜"óFV“ñ‚óFV◊2ñbóFV’≤&WáFVÁ6ñˆ‚%“ñ‚DT4Ñ‰î4≈ı$î‘%íÊBóFV’≤'&ˆ∆R%“”“$eTTÂDUı$î‘$î"í¬ÊˆÊRê¢ñbFV6ÜÊñ6√†¢f˜"óFV“ñ‚óFV◊3†¢ñbóFV“ó2Ê˜BFV6ÜÊñ6¬ÊBóFV’≤&WáFVÁ6ñˆ‚%“ñ‚tT‰U$DTEÙ4‰DîDDU2ÊBóFV’≤'&ˆ∆R%“”“$eTTÂDUı$î‘$î#†¢óFV’≤'&ˆ∆R%““$DU$ïdDıÙtT‰U$DÚ ¢óFV’≤&&6ó2%““b$‘ï4‘ıÙ‰Ù‘%$UÙ$4UıTU˜∑FV6ÜÊñ6≈≤wFÇu“ÊÊ÷W“ ¢óFV’≤'&V∆Fñˆ‚%““≤'&V∆FñˆÂ˜GóR#¢$tT‰U$Dııı""¬'F&vWEˆfñ∆VÊ÷R#¢FV6ÜÊñ6≈≤'FÇ%“ÊÊ÷R¬'7FGW2#¢%$Ù$$ƒR'–¢V∆ñbóFV’≤'&ˆ∆R%“”“$$4ÑïdıÙUÑîƒî"#†¢óFV’≤'&V∆Fñˆ‚%““≤'&V∆FñˆÂ˜GóR#¢$DUT‰DUÙDR"¬'F&vWEˆfñ∆VÊ÷R#¢FV6ÜÊñ6≈≤'FÇ%“ÊÊ÷R¬'7FGW2#¢%$Ù$$ƒR'–¢V∆ñbóFV’≤'&ˆ∆R%“”“%$U5ƒDıÙ4ıî#†¢óFV’≤'&V∆Fñˆ‚%““≤'&V∆FñˆÂ˜GóR#¢%$U5ƒDıÙDR"¬'F&vWEˆfñ∆VÊ÷R#¢FV6ÜÊñ6≈≤'FÇ%“ÊÊ÷R¬'7FGW2#¢%$Ù$$ƒR'–¢V«6S†¢6ÊFñFFW2“6˜'FVBÄ¢ÜóFV“f˜"óFV“ñ‚óFV◊2ñbóFV’≤'&ˆ∆R%“”“$eTTÂDUı$î‘$î"í¿¢∂Wì÷∆÷&FóFV”¢óFV’≤'FÇ%“ÊÊ÷R¿¢ê¢ñb∆V‚Ü6ÊFñFFW2í‚†¢FWáEˆÜ6ÜW3¢Fñ7E∑7G"¬∆ó7E∂Fñ7E∑7G"¬Áï’’““FVfV«FFñ7BÜ∆ó7Bê¢f˜"óFV“ñ‚6ÊFñFFW3†¢Ú¬FWáE˜f«VR¬Ú¬Ú¬Ú“FWFW&÷ñÊó7Fñ5ˆWáG&7BÜóFV’≤'FÇ%“¬óFV’≤'&ˆ∆R%“ê¢Ê˜&÷∆ó¶VB“Ê˜&÷∆ó¶VE˜FWáBáFWáE˜f«VRê¢ñbÊ˜&÷∆ó¶VC†¢FWáEˆÜ6ÜW5∂Ü6Ü∆ñ"Á6Ü#SbÜÊ˜&÷∆ó¶VBÊVÊ6ˆFRÇííÊÜWÜFñvW7BÇï“ÊVÊBÜóFV“ê¢76ˆ6ñFVEˆñG3¢6WE∂ñÁE““6WBÇê¢f˜"÷F6ÜñÊrñ‚FWáEˆÜ6ÜW2Áf«VW2Çì†¢ñb∆V‚Ü÷F6ÜñÊrí¬#†¢6ˆÁFñÁVP¢6ÊˆÊñ6¬“÷F6ÜñÊu≥–¢f˜"óFV“ñ‚÷F6ÜñÊu≥•”†¢óFV’≤'&ˆ∆R%““$‘‰îdU5D4îÙÂÙ4Ù4îD ¢óFV’≤&&6ó2%““$‰Ù‘%$UÙ$4UÙUÑ5DııïÙÑ4ÖıDUÖDıÙ‰ı$‘ƒï§DıÙ4Ùî‰4îDTÂDR ¢óFV’≤'&V∆Fñˆ‚%““∞¢'&V∆FñˆÂ˜GóR#¢$‘‰îdU5D4îÙÂÙDR"¬'F&vWEˆfñ∆VÊ÷R#¢6ÊˆÊñ6≈≤'FÇ%“ÊÊ÷R¿¢'7FGW2#¢$4Ù‰dï$‘D"¬&WfñFVÊ6R#¢$‰ı$‘ƒï§TEıDUÖEÙÑ4ÖÙ‘D4Ç"¿¢–¢76ˆ6ñFVEˆñG2ÊFBÜñBÜóFV“íê¢6ÊˆÊñ6¬“6ÊFñFFW5≥–¢f˜"óFV“ñ‚6ÊFñFFW5≥•”†¢ñbñBÜóFV“íÊ˜Bñ‚76ˆ6ñFVEˆñG3†¢óFV’≤'&V∆Fñˆ‚%““∞¢'&V∆FñˆÂ˜GóR#¢%$Tƒ4îÙ‰DıÙ4Ù‚"¬'F&vWEˆfñ∆VÊ÷R#¢6ÊˆÊñ6≈≤'FÇ%“ÊÊ÷R¿¢'7FGW2#¢%ı4î$ƒR"¬&WfñFVÊ6R#¢$‰Ù‘%$UÙ$4UÙUÑ5Dıı4îÂÙUdîDT‰4îÙDUÙ4ÙÂDT‰îDıı5Tddî4îTÂDR"¿¢–¢&WGW&‚&ˆ˜B¬FW67&óF˜'0††¶FVb&ˆ6W75ˆˆÊRÜóFV”¢Fñ7E∑7G"¬Áï“¬&ˆ˜C¢FÇ¬VÁ&ñ6Ü÷VÁC¢Fñ7E∑7G"¬Áï“¬f˜&6VEˆfñ«W&S¢&ˆˆ¬“f«6Rí”‚Fñ7E∑7G"¬Áï”†¢6˜W&6S¢FÇ“óFV’≤'FÇ%–¢˜&ñvñÊ≈ˆÜ6Ç“óFV’≤&Ü6Ç%–¢&ˆ∆R“óFV’≤'&ˆ∆R%–¢ñb&ˆ∆R”“%DT’ı$≈Ù44ÑR#†¢&WGW&‚≤'6˜W&6R#¢7G"á6˜W&6Rí¬'&ˆ∆R#¢&ˆ∆R¬'7FGW2#¢$DUDT5DDıı4îÂÙDU$ïdDı2'–¢ñÊ6«VFUˆß6ˆÊ¬“&ˆ∆R“%$U5ƒDıÙ4ıî ¢7FvR“FÇáFV◊fñ∆RÊ÷∂GFV◊á&VfóÉ÷b"Á∑6˜W&6RÊÊ÷W“Ê∆Ü“◊7FvR“"¬Fó#◊6˜W&6RÁ&VÁBíê¢G'ì†¢Fá2“˜WGWE˜Fá2á6˜W&6Rê¢FW6ó&VB“≤'6Ü#Sb'–¢á7FvRÚFá5≤'6Ü#Sb%“ÊÊ÷RíÁw&óFU˜FWáBá6Ü#Se˜FWáBá6˜W&6Rí¬VÊ6ˆFñÊs“'WFb”Ç"ê¢ñÊ6«VFUˆ÷B“f«6P¢ñbñÊ6«VFUˆß6ˆÊ√†¢&V∆FófR“6˜W&6RÁ&V∆FófU˜FÚá&ˆ˜BíÊ5˜˜6óÇÇíñb&ˆ˜BÊó5ˆFó"ÇíV«6R6˜W&6RÊÊ÷P¢&V6˜&G2“'Vñ∆E˜&V6˜&G2á6˜W&6R¬&ˆ˜B¬&ˆ∆R¬óFV’≤&&6ó2%“¬∂óFV’≤'&V∆Fñˆ‚%’“ñbóFV“ÊvWBÇ'&V∆Fñˆ‚"íV«6Rµ“¬VÁ&ñ6Ü÷VÁBÊvWBá&V∆FófRíê¢7FvVEˆß6ˆÊ¬“7FvRÚFá5≤&ß6ˆÊ¬%“ÊÊ÷P¢w&óFUˆß6ˆÊ¬á7FvVEˆß6ˆÊ¬¬&V6˜&G2ê¢f∆ñFFUˆß6ˆÊ¬á7FvVEˆß6ˆÊ¬¬6˜W&6Rê¢FW6ó&VBÊFBÇ&ß6ˆÊ¬"ê¢ñÊ6«VFUˆ÷B“vÁG5ˆ÷&∂F˜v‚á&ˆ∆R¬&V6˜&G2ê¢ñbñÊ6«VFUˆ÷C†¢á7FvRÚFá5≤&÷&∂F˜v‚%“ÊÊ÷RíÁw&óFU˜FWáBá&VÊFW%ˆ÷&∂F˜v‚á&V6˜&G2¬6Ü#Seˆfñ∆Rá7FvVEˆß6ˆÊ¬íí¬VÊ6ˆFñÊs“'WFb”Ç"ê¢FW6ó&VBÊFBÇ&÷&∂F˜v‚"ê¢ñbf˜&6VEˆfñ«W&S†¢&ó6Rf«VTW'&˜"Ç$f∆∆ÚFRf∆ñF6ú;6‚6ˆ∆ñ6óFFÚ&'VV&‚"ê¢f∆ñFFUˆ'VÊF∆Rá7FvR¬6˜W&6R¬ñÊ6«VFUˆß6ˆÊ¬¬ñÊ6«VFUˆ÷Bê¢ñb6˜W&6RÁ7FBÇíÁ7E˜6ó¶R“óFV’≤'6ó¶R%“˜"6Ü#Seˆfñ∆Rá6˜W&6Rí“˜&ñvñÊ≈ˆÜ6É†¢&ó6Rf«VTW'&˜"Ç$V¬˜&ñvñÊ¬6÷&ú;2GW&ÁFRV¬&ˆ6W6÷ñVÁFÛ≤ÊÚ6RV&∆ñ6‚FW&ófF˜2‚"ê¢V&∆ó6Öˆ'VÊF∆Rá7FvR¬6˜W&6R¬FW6ó&VBê¢&WGW&‚≤'6˜W&6R#¢7G"á6˜W&6Rí¬'&ˆ∆R#¢&ˆ∆R¬'7FGW2#¢$tT‰U$DÚ"¬&˜WGWG2#¢∑7G"Ü˜WGWE˜Fá2á6˜W&6Rï∂∂Wï“íf˜"∂Wíñ‚6˜'FVBÜFW6ó&VBï“¬&˜&ñvñÊ≈ˆ÷ˆFñfñVB#¢f«6W–¢fñÊ∆«ì†¢6áWFñ¬Á&◊G&VRá7FvR¬ñvÊ˜&UˆW'&˜'3’G'VRê††¶FVb&ˆ6W72áF&vWC¢FÇ¬VÁ&ñ6Ü÷VÁE˜FÉ¢FÇ¬ÊˆÊR“ÊˆÊR¬f˜&6VEˆfñ«W&S¢&ˆˆ¬“f«6Rí”‚Fñ7E∑7G"¬Áï”†¢F&vWB“F&vWBÁ&W6ˆ«fRÇê¢ñbıUEUEÛÉñ‚F&vWBÁ'G3†¢&WGW&‚≤&W7FFÚ#¢$$ƒıTTDÚ"¬&÷ˆFÚ#¢$Ù4U54î‰uÙ‘ÙDR¬&÷˜FófÚ#¢b'¥ıUEUEÛÉ“ÊÚVVFR6W"gVVÁFR‚"¬&66ñˆÊW5ˆV¶V7WFF2#¢$ÊñÊwVÊ‚'–¢ñbÊ˜BF&vWBÊWÜó7G2Çí˜"F&vWBÊó5˜7ñ÷∆ñÊ≤Çí˜"Ê˜BáF&vWBÊó5ˆfñ∆RÇí˜"F&vWBÊó5ˆFó"Çíì†¢&ó6Rf«VTW'&˜"Ç$∆'WFFV&R6W"V‚&6ÜófÚÚ6'WF˜&FñÊ&ñWÜó7FVÁFR‚"ê¢&ˆ˜B¬FW67&óF˜'2“&W&UˆFW67&óF˜'2áF&vWBê¢VÁ&ñ6Ü÷VÁB“∆ˆEˆVÁ&ñ6Ü÷VÁBÜVÁ&ñ6Ü÷VÁE˜FÇê¢&W7V«G2“µ–¢f˜"óFV“ñ‚FW67&óF˜'3†¢&W7V«G2ÊVÊBá&ˆ6W75ˆˆÊRÜóFV“¬&ˆ˜B¬VÁ&ñ6Ü÷VÁB¬f˜&6VEˆfñ«W&Ríê¢&WGW&‚∞¢&W7FFÚ#¢$4Ù’ƒUDDÚ"¬&÷ˆFÚ#¢$Ù4U54î‰uÙ‘ÙDR¬''WFˆÊ∆ó¶F#¢7G"áF&vWBí¿¢'&V7W'6˜5ˆFWFV7FF˜2#¢∆V‚ÜFW67&óF˜'2í¬'&W7V«FF˜2#¢&W7V«G2¿¢&˜&ñvñÊ∆W5ˆ÷ˆFñfñ6F˜2#¢f«6R¬'fW'6ñˆÂ˜6∂ñ∆¬#¢4¥îƒ≈ıdU%4îÙ‚¿¢&Ê˜F#¢$ÊÚ6R6∆6ñfñ6&ˆ‚¬÷˜fñW&ˆ‚¬&VÊˆ÷'&&ˆ‚¬gW6ñˆÊ&ˆ‚ÊíV∆ñ÷ñÊ&ˆ‚˜&ñvñÊ∆W2‚"¿¢–††¶FVbG'ï˜'V‚áF&vWC¢FÇí”‚Fñ7E∑7G"¬Áï”†¢F&vWB“F&vWBÁ&W6ˆ«fRÇê¢ñbıUEUEÛÉñ‚F&vWBÁ'G3†¢&WGW&‚≤&W7FFÚ#¢$$ƒıTTDÚ"¬&÷ˆFÚ#¢$Ù4U54î‰uÙ‘ÙDR¬&÷˜FófÚ#¢b'¥ıUEUEÛÉ“ÊÚVVFR6W"gVVÁFR‚'–¢&ˆ˜B¬FW67&óF˜'2“&W&UˆFW67&óF˜'2áF&vWBê¢&WGW&‚∞¢&W7FFÚ#¢$$Ù$DÚ"¬&÷ˆFÚ#¢$Ù4U54î‰uÙ‘ÙDR¬''WFˆÊ∆ó¶F#¢7G"áF&vWBí¿¢'&V7W'6˜2#¢∞¢≤''WF˜&V∆Fóf#¢óFV’≤'FÇ%“Á&V∆FófU˜FÚá&ˆ˜BíÊ5˜˜6óÇÇíñb&ˆ˜BÊó5ˆFó"ÇíV«6RóFV’≤'FÇ%“ÊÊ÷R¬'&ˆ∆R#¢óFV’≤'&ˆ∆R%“¬&&6ó2#¢óFV’≤&&6ó2%◊–¢f˜"óFV“ñ‚FW67&óF˜'0¢“¿¢&FW7FñÊÚ#¢$DU$ïdDı5ÙƒDU$ƒU5Ù•TÂDıÙÙ4DÙı$îtî‰¬"¿¢–††¶FVb÷ñ‚Çí”‚ñÁC†¢'6W"“&w'6R‰&wV÷VÁE'6W"ÜFW67&óFñˆ„’ıˆFˆ5ıÚê¢'6W"ÊFEˆ&wV÷VÁBÇ''WF"¬GóS’FÇê¢'6W"ÊFEˆ&wV÷VÁBÇ"“÷G'í◊'V‚"¬7Fñˆ„“'7F˜&U˜G'VR"ê¢'6W"ÊFEˆ&wV÷VÁBÇ"“÷í÷VÁ&ñ6Ü÷VÁB"¬GóS’FÇê¢'6W"ÊFEˆ&wV÷VÁBÇ"“÷f˜&6R◊f∆ñFFñˆ‚÷fñ«W&R"¬7Fñˆ„“'7F˜&U˜G'VR"¬ÜV«÷&w'6RÂ5U$U52ê¢&w2“'6W"Á'6Uˆ&w2Çê¢G'ì†¢&W˜'B“G'ï˜'V‚Ü&w2Á'WFíñb&w2ÊG'ï˜'V‚V«6R&ˆ6W72Ü&w2Á'WF¬&w2ÊïˆVÁ&ñ6Ü÷VÁB¬&w2Êf˜&6U˜f∆ñFFñˆÂˆfñ«W&Rê¢WÜ6WBWÜ6WFñˆ‚2WÜ3†¢&W˜'B“≤&W7FFÚ#¢$U%$ı""¬&÷ˆFÚ#¢$Ù4U54î‰uÙ‘ÙDR¬&÷˜FófÚ#¢b'∑GóRÜWÜ2íÂıˆÊ÷Uı˜”¢∂WÜ7“"¬&66ñˆÊW2#¢$ÊÚ6RV&∆ñ6&ˆ‚FW&ófF˜2ñÊ6ˆ◊∆WF˜2‚'–¢&ñÁBÜß6ˆ‚ÊGV◊2á&W˜'B¬VÁ7W&Uˆ66ñì‘f«6R¬ñÊFVÁC”"íê¢&WGW&‚¢&ñÁBÜß6ˆ‚ÊGV◊2á&W˜'B¬VÁ7W&Uˆ66ñì‘f«6R¬ñÊFVÁC”"íê¢&WGW&‚"ñb&W˜'E≤&W7FFÚ%“”“$$ƒıTTDÚ"V«6R ††¶ñbıˆÊ÷UıÚ”“%ıˆ÷ñÂıÚ#†¢&ó6R7ó7FV‘WÜóBÜ÷ñ‚Çíê
+    metrics = {"paragraph_count": len(document.paragraphs), "heading_count": heading_count, "table_count": len(document.tables), "text_length": len(full_text)}
+    return records, full_text, metrics, warnings, metadata
+
+
+def extract_xlsx(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    import openpyxl
+    keep_vba = path.suffix.lower() == ".xlsm"
+    book = openpyxl.load_workbook(path, read_only=False, data_only=False, keep_vba=keep_vba, keep_links=True)
+    try:
+        values_book = openpyxl.load_workbook(path, read_only=False, data_only=True, keep_vba=False, keep_links=True)
+    except Exception:
+        values_book = None
+    records: list[dict[str, Any]] = []
+    texts = []
+    formula_count = table_count = chart_count = cell_count = 0
+    for order, sheet in enumerate(book.worksheets, 1):
+        visibility = sheet.sheet_state.upper()
+        records.append({
+            "record_type": "sheet", "sheet_id": f"SHT-{order:03d}", "name": sheet.title,
+            "order": order, "visibility": visibility, "used_range": sheet.calculate_dimension(),
+        })
+        values_sheet = values_book[sheet.title] if values_book and sheet.title in values_book.sheetnames else None
+        for row in sheet.iter_rows():
+            for cell in row:
+                if cell.value is None:
+                    continue
+                cell_count += 1
+                if cell.data_type == "f" or (isinstance(cell.value, str) and cell.value.startswith("=")):
+                    formula_count += 1
+                    calculated = values_sheet[cell.coordinate].value if values_sheet else None
+                    records.append({
+                        "record_type": "formula", "sheet_id": f"SHT-{order:03d}", "address": cell.coordinate,
+                        "formula": str(cell.value), "calculated_value": json_safe(calculated),
+                    })
+                    texts.append(f"{sheet.title}!{cell.coordinate}: {cell.value}")
+                else:
+                    records.append({
+                        "record_type": "cell", "sheet_id": f"SHT-{order:03d}", "address": cell.coordinate,
+                        "value": json_safe(cell.value), "data_type": cell.data_type,
+                    })
+                    texts.append(f"{sheet.title}!{cell.coordinate}: {cell.value}")
+        for name, table in sheet.tables.items():
+            table_count += 1
+            records.append({"record_type": "table", "sheet_id": f"SHT-{order:03d}", "name": name, "range": table.ref})
+        for index, chart in enumerate(sheet._charts, 1):
+            chart_count += 1
+            records.append({"record_type": "chart", "sheet_id": f"SHT-{order:03d}", "chart_number": index, "chart_type": type(chart).__name__})
+    warnings = []
+    with zipfile.ZipFile(path) as archive:
+        if any(name.endswith("vbaProject.bin") for name in archive.namelist()):
+            warnings.append(warning("MACRO_NO_EJECUTADA", "Se detect√≥ contenido VBA que no fue ejecutado."))
+    props = book.properties
+    metadata = {
+        "title": props.title, "creator": props.creator, "last_modified_by": props.lastModifiedBy,
+        "created": json_safe(props.created), "modified": json_safe(props.modified),
+    }
+    full_text = "\n".join(texts)
+    metrics = {
+        "sheet_count": len(book.sheetnames), "sheet_names": list(book.sheetnames), "cell_count": cell_count,
+        "formula_count": formula_count, "table_count": table_count, "chart_count": chart_count,
+        "text_length": len(full_text),
+    }
+    book.close()
+    if getattr(book, "vba_archive", None):
+        book.vba_archive.close()
+    if values_book:
+        values_book.close()
+    return records, full_text, metrics, warnings, metadata
+
+
+def extract_presentation(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    from pptx import Presentation
+    deck = Presentation(path)
+    records: list[dict[str, Any]] = []
+    texts = []
+    image_count = table_count = 0
+    for index, slide in enumerate(deck.slides, 1):
+        slide_texts = []
+        for shape in slide.shapes:
+            if getattr(shape, "has_text_frame", False):
+                slide_texts.append(shape.text)
+            if getattr(shape, "has_table", False):
+                table_count += 1
+                rows = [[cell.text for cell in row.cells] for row in shape.table.rows]
+                records.append({"record_type": "table", "slide_number": index, "rows": rows})
+            if getattr(shape, "shape_type", None) == 13:
+                image_count += 1
+        notes = ""
+        try:
+            notes = slide.notes_slide.notes_text_frame.text
+        except Exception:
+            pass
+        records.append({"record_type": "slide", "slide_number": index, "text": "\n".join(slide_texts), "notes": notes})
+        texts.extend(slide_texts)
+        if notes:
+            texts.append(notes)
+    full_text = "\n".join(texts)
+    metrics = {"slide_count": len(deck.slides), "table_count": table_count, "image_count": image_count, "text_length": len(full_text)}
+    return records, full_text, metrics, [], {}
+
+
+def extract_image(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    from PIL import ExifTags, Image
+    with Image.open(path) as image:
+        exif_raw = image.getexif()
+        exif = {ExifTags.TAGS.get(key, str(key)): json_safe(value) for key, value in exif_raw.items()}
+        record = {
+            "record_type": "image", "width": image.width, "height": image.height, "format": image.format,
+            "mode": image.mode, "orientation": exif.get("Orientation"), "exif": exif,
+        }
+        metrics = {"image_count": 1, "width": image.width, "height": image.height, "text_length": 0}
+        metadata = {"format": image.format, "mode": image.mode, "exif_present": bool(exif)}
+    warnings = [warning("NO_EXTRAIDO", "No se aplic√≥ OCR ni descripci√≥n visual determinista; requiere una √∫nica intervenci√≥n de IA o revisi√≥n humana.", "BAJO")]
+    if "GPSInfo" in exif:
+        warnings.append(warning("POSIBLE_GEOLOCALIZACION", "Los metadatos EXIF contienen informaci√≥n GPS; revisar privacidad.", "ALTO"))
+    return [record], "", metrics, warnings, metadata
+
+
+def extract_media(path: Path, kind: str) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    command = ["ffprobe", "-v", "error", "-show_format", "-show_streams", "-print_format", "json", str(path)]
+    records: list[dict[str, Any]] = []
+    warnings = []
+    metadata: dict[str, Any] = {}
+    try:
+        completed = subprocess.run(command, capture_output=True, text=True, timeout=30, check=True)
+        metadata = json.loads(completed.stdout)
+        for index, stream in enumerate(metadata.get("streams", [])):
+            records.append({"record_type": f"{kind}_segment", "segment_number": index + 1, "stream_metadata": json_safe(stream)})
+    except Exception as exc:
+        if kind == "audio" and path.suffix.lower() == ".wav":
+            try:
+                with wave.open(str(path), "rb") as audio:
+                    frames = audio.getnframes()
+                    rate = audio.getframerate()
+                    stream = {
+                        "codec_name": "pcm",
+                        "channels": audio.getnchannels(),
+                        "sample_rate": rate,
+                        "sample_width_bytes": audio.getsampwidth(),
+                        "frame_count": frames,
+                        "duration_seconds": frames / rate if rate else 0,
+                    }
+                records.append({"record_type": "audio_segment", "segment_number": 1, "stream_metadata": stream})
+                metadata = {"streams": [stream], "format": {"duration": stream["duration_seconds"]}}
+            except Exception as fallback_exc:
+                warnings.append(warning("EXTRACCION_PARCIAL", f"No fue posible obtener metadatos multimedia: {type(fallback_exc).__name__}."))
+        else:
+            warnings.append(warning("EXTRACCION_PARCIAL", f"No fue posible obtener metadatos multimedia: {type(exc).__name__}."))
+    warnings.append(warning("NO_EXTRAIDO", "No se gener√≥ transcripci√≥n; se conserva como limitaci√≥n expl√≠cita.", "BAJO"))
+    format_data = metadata.get("format", {})
+    metrics = {
+        "duration_seconds": float(format_data.get("duration", 0) or 0),
+        "stream_count": len(metadata.get("streams", [])), "text_length": 0,
+    }
+    return records, "", metrics, warnings, metadata
+
+
+def extract_archive(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    warnings = []
+    encrypted = False
+    if zipfile.is_zipfile(path):
+        with zipfile.ZipFile(path) as archive:
+            infos = archive.infolist()
+            if len(infos) > MAX_ARCHIVE_MEMBERS:
+                warnings.append(warning("EXTRACCION_PARCIAL", f"Inventario limitado a {MAX_ARCHIVE_MEMBERS} miembros."))
+            for info in infos[:MAX_ARCHIVE_MEMBERS]:
+                encrypted = encrypted or bool(info.flag_bits & 0x1)
+                records.append({
+                    "record_type": "archive_member", "path": info.filename, "size_bytes": info.file_size,
+                    "compressed_size_bytes": info.compress_size, "modified_at_container": "%04d-%02d-%02dT%02d:%02d:%02d" % info.date_time,
+                    "encrypted": bool(info.flag_bits & 0x1), "is_directory": info.is_dir(),
+                })
+    elif tarfile.is_tarfile(path):
+        with tarfile.open(path, "r:*") as archive:
+            members = archive.getmembers()
+            for member in members[:MAX_ARCHIVE_MEMBERS]:
+                records.append({
+                    "record_type": "archive_member", "path": member.name, "size_bytes": member.size,
+                    "modified_at_container": iso_timestamp(member.mtime), "encrypted": False,
+                    "is_directory": member.isdir(),
+                })
+            if len(members) > MAX_ARCHIVE_MEMBERS:
+                warnings.append(warning("EXTRACCION_PARCIAL", f"Inventario limitado a {MAX_ARCHIVE_MEMBERS} miembros."))
+    else:
+        warnings.append(warning("FORMATO_NO_SOPORTADO_COMPLETAMENTE", "Se identific√≥ el contenedor, pero no existe un lector est√°tico disponible."))
+    if encrypted:
+        warnings.append(warning("ARCHIVO_PROTEGIDO", "El contenedor incluye miembros cifrados; no fueron extra√≠dos."))
+    metrics = {"archive_member_count": len(records), "encrypted": encrypted, "text_length": 0}
+    return records, "", metrics, warnings, {"container_type": path.suffix.lower()}
+
+
+def extract_email(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    if path.suffix.lower() != ".eml":
+        return [], "", {"text_length": 0}, [warning("FORMATO_NO_SOPORTADO_COMPLETAMENTE", "MSG requiere un extractor est√°tico adicional.")], {}
+    message = BytesParser(policy=policy.default).parsebytes(path.read_bytes())
+    bodies = []
+    attachments = []
+    for part in message.walk():
+        disposition = part.get_content_disposition()
+        if disposition == "attachment":
+            payload = part.get_payload(decode=True) or b""
+            attachments.append({
+                "record_type": "attachment", "filename": part.get_filename(), "content_type": part.get_content_type(),
+                "size_bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest(),
+            })
+        elif part.get_content_type() == "text/plain":
+            try:
+                bodies.append(part.get_content())
+            except Exception:
+                pass
+    body = "\n".join(bodies)[:MAX_TEXT_CHARS]
+    record = {
+        "record_type": "email_message", "from": str(message.get("From", "")),
+        "to": str(message.get("To", "")), "cc": str(message.get("Cc", "")),
+        "date": str(message.get("Date", "")), "subject": str(message.get("Subject", "")), "body": body,
+    }
+    warnings = [warning("POSIBLE_INFORMACION_PERSONAL", "El correo puede contener datos personales; revisar antes de difundir.", "ALTO")]
+    metrics = {"attachment_count": len(attachments), "text_length": len(body)}
+    return [record, *attachments], body, metrics, warnings, {"message_id": str(message.get("Message-ID", ""))}
+
+
+def extract_sqlite(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    warnings = []
+    uri = f"file:{quote(str(path.resolve()))}?mode=ro"
+    connection = sqlite3.connect(uri, uri=True)
+    try:
+        tables = connection.execute(
+            "SELECT name, sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
+        ).fetchall()
+        for name, sql in tables:
+            try:
+                count = connection.execute(f"SELECT COUNT(*) FROM {quote_sql_identifier(name)}").fetchone()[0]
+            except sqlite3.Error:
+                count = None
+            records.append({"record_type": "database_table", "name": name, "row_count": count, "definition": sql})
+            for cid, field, data_type, not_null, default, primary_key in connection.execute(f"PRAGMA table_info({quote_sql_identifier(name)})"):
+                records.append({
+                    "record_type": "database_field", "table": name, "ordinal": cid, "name": field,
+                    "data_type": data_type, "not_null": bool(not_null), "default": default, "primary_key": bool(primary_key),
+                })
+            for relation in connection.execute(f"PRAGMA foreign_key_list({quote_sql_identifier(name)})"):
+                records.append({
+                    "record_type": "database_relation", "table": name, "target_table": relation[2],
+                    "source_field": relation[3], "target_field": relation[4],
+                })
+    finally:
+        connection.close()
+    metrics = {"database_table_count": sum(r["record_type"] == "database_table" for r in records), "text_length": 0}
+    return records, "", metrics, warnings, {"engine": "SQLite", "access_mode": "READ_ONLY"}
+
+
+def extract_code(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    raw = path.read_bytes()
+    text = raw[:MAX_TEXT_CHARS].decode("utf-8", errors="replace")
+    records: list[dict[str, Any]] = [{"record_type": "code_file", "language": path.suffix.lower().lstrip("."), "text": text}]
+    dependencies: set[str] = set()
+    symbols: list[tuple[str, str, int]] = []
+    if path.suffix.lower() == ".py":
+        try:
+            tree = ast.parse(text)
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    symbols.append((node.name, "FUNCTION", node.lineno))
+                elif isinstance(node, ast.ClassDef):
+                    symbols.append((node.name, "CLASS", node.lineno))
+                elif isinstance(node, ast.Import):
+                    dependencies.update(alias.name for alias in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.module:
+                    dependencies.add(node.module)
+        except SyntaxError:
+            pass
+    else:
+        for match in re.finditer(r"(?m)^\s*(?:class|function|def|fn)\s+([A-Za-z_$][\w$]*)", text):
+            symbols.append((match.group(1), "SYMBOL", text.count("\n", 0, match.start()) + 1))
+        for match in re.finditer(r"(?m)^\s*(?:import|require\s*\()\s*['\"]?([^'\";\s)]+)", text):
+            dependencies.add(match.group(1))
+    records.extend({"record_type": "code_symbol", "name": name, "symbol_type": kind, "line": line} for name, kind, line in symbols)
+    records.extend({"record_type": "dependency", "name": value, "evidence": "STATIC_PARSE"} for value in sorted(dependencies))
+    secret_pattern = re.compile(r"(?i)(api[_-]?key|secret|token|password)\s*[:=]")
+    warnings = []
+    if secret_pattern.search(text):
+        warnings.append(warning("SECRETO_APARENTE", "Se detect√≥ un posible secreto por an√°lisis est√°tico; su valor no se reproduce en el resumen.", "ALTO"))
+    if len(raw) > MAX_TEXT_CHARS:
+        warnings.append(warning("EXTRACCION_PARCIAL", f"Lectura textual limitada a {MAX_TEXT_CHARS} bytes."))
+    metrics = {"code_symbol_count": len(symbols), "dependency_count": len(dependencies), "text_length": len(text)}
+    return records, text, metrics, warnings, {"language": path.suffix.lower().lstrip("."), "parsed_without_execution": True}
+
+
+def extract_textual(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    raw = path.read_bytes()
+    text = raw[:MAX_TEXT_CHARS].decode("utf-8", errors="replace")
+    warnings = []
+    if len(raw) > MAX_TEXT_CHARS:
+        warnings.append(warning("EXTRACCION_PARCIAL", f"Lectura textual limitada a {MAX_TEXT_CHARS} bytes."))
+    records = [{"record_type": "content", "text": text}]
+    return records, text, {"text_length": len(text)}, warnings, {}
+
+
+def extract_csv(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    raw = path.read_bytes()
+    text = raw[:MAX_TEXT_CHARS].decode("utf-8-sig", errors="replace")
+    records: list[dict[str, Any]] = [{"record_type": "sheet", "sheet_id": "SHT-001", "name": path.stem, "order": 1, "visibility": "VISIBLE"}]
+    row_count = cell_count = 0
+    for row_number, row in enumerate(csv.reader(text.splitlines()), 1):
+        row_count += 1
+        for column_number, value in enumerate(row, 1):
+            if value == "":
+                continue
+            cell_count += 1
+            records.append({
+                "record_type": "cell", "sheet_id": "SHT-001", "row": row_number,
+                "column": column_number, "value": value, "data_type": "TEXT",
+            })
+    warnings = []
+    if len(raw) > MAX_TEXT_CHARS:
+        warnings.append(warning("EXTRACCION_PARCIAL", f"Lectura CSV limitada a {MAX_TEXT_CHARS} bytes."))
+    return records, text, {"sheet_count": 1, "sheet_names": [path.stem], "row_count": row_count, "cell_count": cell_count, "text_length": len(text)}, warnings, {}
+
+
+def extract_technical(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    ext = path.suffix.lower()
+    records: list[dict[str, Any]] = []
+    text = ""
+    metrics: dict[str, Any] = {"text_length": 0}
+    warnings = []
+    if ext == ".geojson":
+        data = json.loads(path.read_text(encoding="utf-8"))
+        features = data.get("features", []) if isinstance(data, dict) else []
+        for index, feature in enumerate(features, 1):
+            geometry = feature.get("geometry") or {}
+            records.append({
+                "record_type": "gis_feature", "feature_number": index, "feature_id": feature.get("id"),
+                "geometry_type": geometry.get("type"), "properties": json_safe(feature.get("properties", {})),
+            })
+        metrics.update({"entity_count": len(features), "gis_feature_count": len(features)})
+    elif ext == ".ifc":
+        text = path.read_text(encoding="utf-8", errors="replace")[:MAX_TEXT_CHARS]
+        counts = Counter(re.findall(r"=\s*(IFC[A-Z0-9_]+)\s*\(", text, re.I))
+        records.extend({"record_type": "entity", "entity_type": kind.upper(), "count": count} for kind, count in sorted(counts.items()))
+        metrics.update({"entity_count": sum(counts.values()), "text_length": len(text)})
+        warnings.append(warning("GEOMETRIA_NO_REPRESENTADA", "Se inventariaron entidades IFC, pero no se reprodujo toda la geometr√≠a."))
+    elif ext == ".dxf":
+        text = path.read_text(encoding="utf-8", errors="replace")[:MAX_TEXT_CHARS]
+        entity_types = Counter(re.findall(r"(?m)^\s*0\s*\n\s*([A-Z][A-Z0-9_]*)\s*$", text))
+        records.extend({"record_type": "entity", "entity_type": kind, "count": count} for kind, count in sorted(entity_types.items()))
+        metrics.update({"entity_count": sum(entity_types.values()), "text_length": len(text)})
+        warnings.append(warning("GEOMETRIA_NO_REPRESENTADA", "Se inventariaron tipos DXF, pero no se reprodujo toda la geometr√≠a."))
+    else:
+        warnings.append(warning("FORMATO_NO_SOPORTADO_COMPLETAMENTE", "El formato t√©cnico se verific√≥ por metadatos y hash; no se interpret√≥ su modelo interno."))
+        warnings.append(warning("GEOMETRIA_NO_REPRESENTADA", "No se reprodujo la geometr√≠a del modelo.", "BAJO"))
+    return records, text, metrics, warnings, {"software_family": technical_family(ext), "parsed_without_execution": True}
+
+
+def technical_family(ext: str) -> str | None:
+    if ext in {".edb", ".e2k"}:
+        return "ETABS"
+    if ext in {".sdb", ".f2k"}:
+        return "SAP2000"
+    if ext in {".rvt", ".rfa"}:
+        return "REVIT"
+    if ext in {".dwg", ".dxf", ".dwt", ".dwf", ".dwfx"}:
+        return "AUTOCAD"
+    if ext in {".qgz", ".qgs", ".shp", ".geojson", ".kml", ".kmz"}:
+        return "GIS"
+    return None
+
+
+def extract_static_binary(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    metadata: dict[str, Any] = {"executed": False, "loaded": False}
+    try:
+        completed = subprocess.run(["file", "--brief", "--", str(path)], capture_output=True, text=True, timeout=15, check=True)
+        metadata["static_signature_description"] = completed.stdout.strip()
+    except Exception as exc:
+        metadata["static_signature_error"] = type(exc).__name__
+    warnings = [warning("CONTENIDO_ACTIVO_NO_EJECUTADO", "El archivo activo fue inspeccionado solo de forma est√°tica; no se ejecut√≥, instal√≥ ni carg√≥.", "ALTO")]
+    return [], "", {"text_length": 0}, warnings, metadata
+
+
+def extract_generic(path: Path) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    return [], "", {"text_length": 0}, [warning("FORMATO_NO_SOPORTADO_COMPLETAMENTE", "Se conservaron identidad, integridad y metadatos; no existe extractor determinista completo.")], {}
+
+
+def deterministic_extract(path: Path, role: str) -> tuple[list[dict[str, Any]], str, dict[str, Any], list[dict[str, Any]], dict[str, Any]]:
+    ext = path.suffix.lower()
+    try:
+        if role == "EJECUTABLE_ACTIVO":
+            return extract_static_binary(path)
+        if role == "CONTENEDOR":
+            return extract_archive(path)
+        if role == "BASE_DATOS" and ext in {".sqlite", ".sqlite3", ".db"}:
+            return extract_sqlite(path)
+        if role == "CODIGO_FUENTE":
+            return extract_code(path)
+        if ext == ".pdf":
+            return extract_pdf(path)
+        if ext in {".docx", ".docm"}:
+            return extract_docx(path)
+        if ext in {".xlsx", ".xlsm"}:
+            return extract_xlsx(path)
+        if ext == ".csv":
+            return extract_csv(path)
+        if ext in {".pptx", ".pptm"}:
+            return extract_presentation(path)
+        if ext in IMAGES:
+            return extract_image(path)
+        if ext in AUDIO:
+            return extract_media(path, "audio")
+        if ext in VIDEO:
+            return extract_media(path, "video")
+        if ext in EMAILS:
+            return extract_email(path)
+        if ext in TECHNICAL:
+            return extract_technical(path)
+        if ext in {".txt", ".md", ".rtf", ".log", ".xml", ".json", ".yaml", ".yml", ".ini", ".cfg", ".sql"}:
+            return extract_textual(path)
+        return extract_generic(path)
+    except Exception as exc:
+        return [], "", {"text_length": 0}, [warning("EXTRACCION_PARCIAL", f"El extractor fall√≥ de forma controlada: {type(exc).__name__}: {exc}", "ALTO")], {}
+
+
+def normalized_text(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip().casefold()
+
+
+def normalized_title(stem: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", stem.casefold()).strip()
+
+
+def keyword_values(path: Path, text: str, metadata: dict[str, Any]) -> list[str]:
+    keyword_text = redact_sensitive_text(text[:200000])
+    tokens = re.findall(r"[A-Za-z√Å√â√ç√ì√ö√ú√ë√°√©√≠√≥√∫√º√±][\w√Å√â√ç√ì√ö√ú√ë√°√©√≠√≥√∫√º√±-]{2,}", f"{path.stem} {keyword_text}")
+    counts = Counter(token.casefold() for token in tokens if token.casefold() not in STOPWORDS and not token.isdigit())
+    values = [token for token, _ in counts.most_common(24)]
+    family = metadata.get("software_family")
+    if family and family.casefold() not in values:
+        values.append(family.casefold())
+    return values
+
+
+def redact_sensitive_text(text: str) -> str:
+    return re.sub(
+        r"(?i)(api[_-]?key|secret|token|password)\s*[:=]\s*(['\"]?)[^\s,'\";]+\2",
+        r"\1 REDACTED",
+        text,
+    )
+
+
+def summary_text(path: Path, role: str, detected: dict[str, Any], metrics: dict[str, Any], warnings: list[dict[str, Any]]) -> str:
+    parts = [f"{path.name} es un recurso {detected['declared_format']} con rol operativo {role}."]
+    observed = []
+    for key in ("page_count", "sheet_count", "slide_count", "table_count", "formula_count", "image_count", "archive_member_count", "database_table_count", "entity_count", "attachment_count"):
+        if metrics.get(key) is not None:
+            observed.append(f"{key}={metrics[key]}")
+    if observed:
+        parts.append("Componentes observados: " + ", ".join(observed) + ".")
+    parts.append("Puede utilizarse para consulta y comparaci√≥n posterior; la clasificaci√≥n definitiva corresponde a otra etapa.")
+    if warnings:
+        parts.append("La extracci√≥n presenta limitaciones registradas expl√≠citamente en el JSONL.")
+    return " ".join(parts)
+
+
+def deterministic_descriptions(
+    path: Path,
+    role: str,
+    detected: dict[str, Any],
+    metrics: dict[str, Any],
+    warnings: list[dict[str, Any]],
+) -> dict[str, Any]:
+    brief = summary_text(path, role, detected, metrics, warnings)
+    metric_names = [
+        key for key in (
+            "page_count", "sheet_count", "slide_count", "table_count", "formula_count",
+            "image_count", "archive_member_count", "database_table_count", "entity_count",
+            "attachment_count",
+        ) if metrics.get(key) is not None
+    ]
+    observed = ", ".join(metric_names) if metric_names else "metadatos, formato e integridad"
+    long_description = (
+        f"{brief} La representaci√≥n de m√°quina conserva {observed} cuando fueron verificables. "
+        "Los hechos objetivos proceden de extracci√≥n determinista; las limitaciones y el alcance "
+        "quedan registrados sin sustituir al archivo original."
+    )
+    return {
+        "short_description": f"{path.stem}: recurso {detected['declared_format']} ({role}).",
+        "brief_description": brief,
+        "long_description": long_description,
+        "synonyms": [],
+    }
+
+
+def structural_signature(records: Iterable[dict[str, Any]], metrics: dict[str, Any]) -> str:
+    structure = {
+        "record_counts": Counter(record["record_type"] for record in records),
+        "metrics": metrics,
+    }
+    payload = json.dumps(json_safe(structure), ensure_ascii=False, sort_keys=True).encode()
+    return hashlib.sha256(payload).hexdigest()
+
+
+def build_records(
+    path: Path,
+    root: Path,
+    role: str,
+    role_basis: str,
+    relations: list[dict[str, Any]] | None = None,
+    enrichment: dict[str, Any] | None = None,
+    processing_mode: str = PROCESSING_MODE,
+    processing_metadata: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    source_hash = sha256_file(path)
+    stat = path.stat()
+    detected = detect_format(path)
+    content_records, text, metrics, extractor_warnings, technical_metadata = deterministic_extract(path, role)
+    source_metadata = base_metadata(path, root)
+    source_metadata.update({
+        "format_declared": detected["declared_format"],
+        "format_detected": detected["detected_format"],
+        "title_detected": metadata_value(technical_metadata, "title"),
+        "author_detected": metadata_value(technical_metadata, "author", "creator"),
+        "organization_detected": metadata_value(technical_metadata, "organization", "company"),
+        "creator_application": metadata_value(technical_metadata, "creator_application", "application", "producer", "creator_tool"),
+        "modifier_application": metadata_value(technical_metadata, "modifier_application", "last_modified_by"),
+    })
+    generated_at = utc_now()
+    ai_applied = bool(enrichment)
+    manifest = {
+        "record_type": "manifest", "schema_name": SCHEMA_NAME, "schema_version": SCHEMA_VERSION,
+        "source_filename": path.name, "source_relative_path": source_metadata["source_relative_path"],
+        "generated_at": generated_at,
+        "generated_by": f"{SKILL_NAME} {SKILL_VERSION}" + (" + IA_UNICA" if ai_applied else ""),
+        "processing_mode": processing_mode,
+    }
+    manifest.update(json_safe(processing_metadata or {}))
+    integrity = {"record_type": "integrity", "algorithm": "SHA-256", "source_sha256": source_hash, "source_size_bytes": stat.st_size}
+    role_record = {"record_type": "file_role", "role": role, "basis": role_basis, "classification_is_final": False}
+    format_record = {"record_type": "format_information", **detected, **json_safe(technical_metadata)}
+    normalized = normalized_text(text)
+    comparison = {
+        "record_type": "comparison_features", "source_sha256": source_hash,
+        "source_size_bytes": stat.st_size, "source_created_at": source_metadata["source_created_at"],
+        "source_modified_at": source_metadata["source_modified_at"], "detected_format": detected["detected_format"],
+        "page_count": metrics.get("page_count"), "sheet_count": metrics.get("sheet_count"),
+        "sheet_names": metrics.get("sheet_names"), "table_count": metrics.get("table_count"),
+        "formula_count": metrics.get("formula_count"), "image_count": metrics.get("image_count"),
+        "layer_count": metrics.get("layer_count"), "entity_count": metrics.get("entity_count"),
+        "text_length": len(text), "normalized_title": normalized_title(path.stem),
+        "normalized_text_hash": hashlib.sha256(normalized.encode()).hexdigest() if normalized else None,
+        "structure_signature": structural_signature(content_records, metrics),
+        "metadata_signature": hashlib.sha256(json.dumps(json_safe({**detected, **technical_metadata}), sort_keys=True).encode()).hexdigest(),
+    }
+    descriptions = deterministic_descriptions(path, role, detected, metrics, extractor_warnings)
+    keywords = keyword_values(path, text, technical_metadata)
+    semantic_records: list[dict[str, Any]] = []
+    if enrichment:
+        legacy_summary = enrichment.get("summary")
+        if isinstance(legacy_summary, str) and legacy_summary.strip():
+            descriptions["brief_description"] = redact_sensitive_text(legacy_summary.strip())
+        for key in ("short_description", "brief_description", "long_description"):
+            if isinstance(enrichment.get(key), str) and enrichment[key].strip():
+                descriptions[key] = redact_sensitive_text(enrichment[key].strip())
+        if isinstance(enrichment.get("synonyms"), list):
+            descriptions["synonyms"] = sorted({
+                redact_sensitive_text(str(item).strip())
+                for item in enrichment["synonyms"] if str(item).strip()
+            })
+        if isinstance(enrichment.get("keywords"), list):
+            keywords = sorted(set(keywords + [
+                redact_sensitive_text(str(item).strip())
+                for item in enrichment["keywords"] if str(item).strip()
+            ]))
+        for item in enrichment.get("entities", []):
+            if isinstance(item, dict) and item.get("name"):
+                if not item.get("evidence"):
+                    raise ValueError(f"Entidad IA sin evidencia para {path.name}: {item.get('name')}")
+                semantic_records.append({"record_type": "entity", **json_safe(item), "evidence": item.get("evidence")})
+        for item in enrichment.get("relations", []):
+            if isinstance(item, dict) and item.get("relation_type"):
+                if not item.get("evidence"):
+                    raise ValueError(f"Relaci√≥n IA sin evidencia para {path.name}: {item.get('relation_type')}")
+                semantic_records.append({"record_type": "relation", **json_safe(item), "status": item.get("status", "OBSERVADA")})
+    all_warnings = list(extractor_warnings)
+    if not ai_applied:
+        all_warnings.append(warning("IA_NO_APLICADA", "La salida contiene extracci√≥n y s√≠ntesis deterministas; la intervenci√≥n sem√°ntica de IA no estuvo disponible.", "BAJO"))
+    security = {
+        "record_type": "security", "source_executed": False, "macros_executed": False,
+        "scripts_executed": False, "active_content_detected": role == "EJECUTABLE_ACTIVO" or any(item["code"] in {"MACRO_NO_EJECUTADA", "CONTENIDO_ACTIVO_NO_EJECUTADO"} for item in all_warnings),
+        "possible_secret_detected": any(item["code"] == "SECRETO_APARENTE" for item in all_warnings),
+    }
+    rights_value = metadata_value(technical_metadata, "copyright", "rights", "license")
+    confidence = 0.98
+    if any(item["code"] in {"FORMATO_NO_SOPORTADO_COMPLETAMENTE", "EXTRACCION_PARCIAL"} for item in all_warnings):
+        confidence = 0.65
+    elif any(item["code"] == "NO_EXTRAIDO" for item in all_warnings):
+        confidence = 0.78
+    quality = {
+        "record_type": "quality", "extraction_confidence": confidence,
+        "extraction_status": "PARTIAL" if confidence < 0.9 else "COMPLETE",
+        "deterministic_extraction": True, "ai_enrichment_applied": ai_applied,
+        "ai_passes": 1 if ai_applied else 0, "human_review_recommended": bool(all_warnings),
+    }
+    relation_records = [{"record_type": "relation", **json_safe(item)} for item in (relations or [])]
+    records = [manifest, source_metadata, integrity, role_record, format_record]
+    records.extend(content_records)
+    if metrics:
+        records.append({"record_type": "technical_data", **json_safe(metrics)})
+    records.extend(semantic_records)
+    records.extend(relation_records)
+    records.extend([
+        {
+            "record_type": "summary",
+            "text": descriptions["brief_description"],
+            **descriptions,
+            "generation_method": "AI_UNICA" if ai_applied else "DETERMINISTIC",
+        },
+        {"record_type": "keywords", "values": keywords, "classification_is_final": False},
+    ])
+    if rights_value:
+        records.append({"record_type": "rights_observed", "value": str(rights_value), "status": "OBSERVED_NOT_VERIFIED"})
+    records.extend([security, comparison, quality])
+    records.extend(all_warnings)
+    records.extend([
+        {"record_type": "warnings", "codes": [item["code"] for item in all_warnings], "count": len(all_warnings)},
+        {"record_type": "end", "status": "COMPLETED_WITH_WARNINGS" if all_warnings else "COMPLETED", "source_sha256": source_hash},
+    ])
+    return sorted(records, key=lambda record: ORDER.get(record["record_type"], 7))
+
+
+def write_jsonl(path: Path, records: list[dict[str, Any]]) -> None:
+    path.write_text("".join(json.dumps(record, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n" for record in records), encoding="utf-8")
+
+
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
+    records = []
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            raise ValueError(f"L√≠nea vac√≠a en JSONL: {path}:{line_number}")
+        value = json.loads(line)
+        if not isinstance(value, dict) or not isinstance(value.get("record_type"), str):
+            raise ValueError(f"Registro JSONL inv√°lido: {path}:{line_number}")
+        records.append(value)
+    return records
+
+
+def validate_jsonl(
+    path: Path,
+    source: Path,
+    expected_mode: str = PROCESSING_MODE,
+) -> list[dict[str, Any]]:
+    if not path.is_file() or path.stat().st_size == 0:
+        raise ValueError(f"JSONL ausente o vac√≠o: {path}")
+    records = read_jsonl(path)
+    for line_number, record in enumerate(records, 1):
+        record_type = record["record_type"]
+        if record_type not in ORDER:
+            raise ValueError(f"record_type no admitido en l√≠nea {line_number}: {record_type}")
+        missing_fields = REQUIRED_BY_TYPE.get(record_type, set()).difference(record)
+        if missing_fields:
+            raise ValueError(f"Campos ausentes en {record_type}: {sorted(missing_fields)}")
+    ranks = [ORDER.get(record["record_type"], 7) for record in records]
+    if ranks != sorted(ranks):
+        raise ValueError(f"Jerarqu√≠a JSONL fuera de orden: {path}")
+    record_types = Counter(record["record_type"] for record in records)
+    missing = UNIVERSAL.difference(record_types)
+    if missing:
+        raise ValueError(f"Registros universales ausentes: {sorted(missing)}")
+    for unique in UNIVERSAL:
+        if record_types[unique] != 1:
+            raise ValueError(f"Registro universal repetido: {unique}")
+    manifest = next(record for record in records if record["record_type"] == "manifest")
+    source_metadata = next(record for record in records if record["record_type"] == "source_metadata")
+    integrity = next(record for record in records if record["record_type"] == "integrity")
+    role = next(record for record in records if record["record_type"] == "file_role")
+    summary = next(record for record in records if record["record_type"] == "summary")
+    keywords = next(record for record in records if record["record_type"] == "keywords")
+    quality = next(record for record in records if record["record_type"] == "quality")
+    warnings_record = next(record for record in records if record["record_type"] == "warnings")
+    end = records[-1]
+    source_hash = sha256_file(source)
+    if (
+        manifest.get("schema_name") != SCHEMA_NAME
+        or manifest.get("schema_version") != SCHEMA_VERSION
+        or manifest.get("processing_mode") != expected_mode
+        or manifest.get("source_filename") != source.name
+    ):
+        raise ValueError("Manifest no corresponde al modo esperado o a la fuente.")
+    if (
+        integrity.get("algorithm") != "SHA-256"
+        or not SHA256_RE.fullmatch(str(integrity.get("source_sha256", "")))
+        or integrity.get("source_sha256") != source_hash
+        or integrity.get("source_size_bytes") != source.stat().st_size
+    ):
+        raise ValueError("Integridad del JSONL no corresponde a la fuente.")
+    if (
+        source_metadata.get("source_filename") != source.name
+        or source_metadata.get("source_size_bytes") != source.stat().st_size
+        or source_metadata.get("source_relative_path") != manifest.get("source_relative_path")
+    ):
+        raise ValueError("Metadatos universales no corresponden a la fuente o al manifest.")
+    if role.get("role") not in ALLOWED_ROLES or role.get("classification_is_final") is not False:
+        raise ValueError("Rol operativo inv√°lido o presentado como clasificaci√≥n final.")
+    description_fields = ("short_description", "brief_description", "long_description")
+    if any(not isinstance(summary.get(key), str) or not summary[key].strip() for key in description_fields):
+        raise ValueError("Descripci√≥n corta, breve o larga ausente o vac√≠a.")
+    if summary.get("text") != summary.get("brief_description"):
+        raise ValueError("El alias summary.text debe coincidir con brief_description.")
+    if not isinstance(summary.get("synonyms"), list) or any(not isinstance(item, str) or not item.strip() for item in summary["synonyms"]):
+        raise ValueError("Lista de sin√≥nimos inv√°lida.")
+    if not isinstance(keywords.get("values"), list) or keywords.get("classification_is_final") is not False:
+        raise ValueError("Registro de palabras clave inv√°lido.")
+    confidence = quality.get("extraction_confidence")
+    if not isinstance(confidence, (int, float)) or isinstance(confidence, bool) or not 0 <= confidence <= 1:
+        raise ValueError("Confianza de extracci√≥n inv√°lida.")
+    if quality.get("ai_passes") not in {0, 1}:
+        raise ValueError("La IA solo puede intervenir cero o una vez.")
+    warning_codes = [record["code"] for record in records if record["record_type"] == "warning"]
+    if warnings_record.get("codes") != warning_codes or warnings_record.get("count") != len(warning_codes):
+        raise ValueError("Agregado de advertencias inconsistente.")
+    if end.get("record_type") != "end" or end.get("source_sha256") != source_hash:
+        raise ValueError("Registro END no corresponde a la fuente.")
+    return records
+
+
+def find_record(records: list[dict[str, Any]], record_type: str) -> dict[str, Any]:
+    return next(record for record in records if record["record_type"] == record_type)
+
+
+def render_markdown(records: list[dict[str, Any]], jsonl_hash: str) -> str:
+    manifest = find_record(records, "manifest")
+    metadata = find_record(records, "source_metadata")
+    integrity = find_record(records, "integrity")
+    role = find_record(records, "file_role")
+    fmt = find_record(records, "format_information")
+    summary = find_record(records, "summary")
+    keywords = find_record(records, "keywords")
+    quality = find_record(records, "quality")
+    warnings = [record for record in records if record["record_type"] == "warning"]
+    relations = [record for record in records if record["record_type"] == "relation"]
+    technical = next((record for record in records if record["record_type"] == "technical_data"), {})
+    title = metadata.get("title_detected") or Path(manifest["source_filename"]).stem
+    lines = [
+        "---", f"schema_name: {SCHEMA_NAME}", f"schema_version: {SCHEMA_VERSION}",
+        f"source_filename: {json.dumps(manifest['source_filename'], ensure_ascii=False)}",
+        f"source_relative_path: {json.dumps(manifest['source_relative_path'], ensure_ascii=False)}",
+        f"source_size_bytes: {metadata['source_size_bytes']}",
+        f"source_sha256: {integrity['source_sha256']}", f"jsonl_sha256: {jsonl_hash}", f"file_role: {role['role']}",
+        f"format_detected: {json.dumps(fmt.get('detected_format'), ensure_ascii=False)}",
+        f"title_detected: {json.dumps(title, ensure_ascii=False)}", f"language: {json.dumps(metadata.get('language'))}",
+        f"extraction_status: {quality['extraction_status']}", f"extraction_confidence: {quality['extraction_confidence']}",
+        f"generated_at: {manifest['generated_at']}", "---", "", f"# {title}", "",
+        "## Descripci√≥n corta", "", summary["short_description"], "",
+        "## Descripci√≥n breve", "", summary["brief_description"], "",
+        "## Descripci√≥n larga", "", summary["long_description"], "",
+        "## Contenido principal", "",
+        f"- Recurso: `{manifest['source_filename']}`", f"- Rol operativo: `{role['role']}`",
+        f"- Formato detectado: `{fmt.get('detected_format')}`", "", "## Estructura", "",
+    ]
+    if technical:
+        for key, value in technical.items():
+            if key != "record_type" and value is not None:
+                lines.append(f"- {key}: `{json.dumps(value, ensure_ascii=False)}`")
+    else:
+        lines.append("- Sin estructura adicional extra√≠ble de forma determinista.")
+    lines.extend(["", "## Datos t√©cnicos relevantes", "", f"- Tama√±o: `{metadata['source_size_bytes']}` bytes", f"- SHA-256: `{integrity['source_sha256']}`", "", "## Sin√≥nimos", ""])
+    lines.extend(f"- {value}" for value in summary.get("synonyms", []))
+    if not summary.get("synonyms"):
+        lines.append("- Sin sin√≥nimos sustentados.")
+    lines.extend(["", "## Palabras clave", ""])
+    lines.extend(f"- {value}" for value in keywords.get("values", []))
+    if not keywords.get("values"):
+        lines.append("- Sin palabras clave verificables.")
+    lines.extend(["", "## Relaciones observadas", ""])
+    if relations:
+        lines.extend(f"- {item.get('relation_type')}: {item.get('target_filename')} ({item.get('status', 'OBSERVADA')})" for item in relations)
+    else:
+        lines.append("- No se confirmaron relaciones autom√°ticas.")
+    lines.extend(["", "## Limitaciones de extracci√≥n", ""])
+    if warnings:
+        lines.extend(f"- `{item['code']}`: {item['description']}" for item in warnings)
+    else:
+        lines.append("- Sin limitaciones registradas.")
+    lines.extend([
+        "", "## Calidad", "", f"- Cobertura: `{quality['extraction_status']}`",
+        f"- Confianza: `{quality['extraction_confidence']}`", f"- Advertencias: `{len(warnings)}`",
+        f"- Revisi√≥n humana: `{'RECOMENDADA' if quality['human_review_recommended'] else 'OPCIONAL'}`",
+        "", "## Pr√≥xima etapa", "",
+        "El recurso est√° preparado para un proceso posterior de clasificaci√≥n e incorporaci√≥n a ECOSISTEMA. Este derivado no decide su destino definitivo.", "",
+    ])
+    return "\n".join(lines)
+
+
+def sha256_text(source: Path) -> str:
+    source_hash = sha256_file(source)
+    return "\n".join([
+        f"# schema_name: {SCHEMA_NAME}",
+        f"# schema_version: {SCHEMA_VERSION}",
+        "# artifact_type: integrity",
+        f"# source_filename: {json.dumps(source.name, ensure_ascii=False)}",
+        f"# source_size_bytes: {source.stat().st_size}",
+        f"# source_sha256: {source_hash}",
+        f"{source_hash}  {source.name}",
+        "",
+    ])
+
+
+def wants_markdown(role: str, records: list[dict[str, Any]]) -> bool:
+    if role in {"FUENTE_PRIMARIA", "MANIFESTACION_ASOCIADA", "BASE_DATOS", "CODIGO_FUENTE"}:
+        return True
+    if role in {"ARCHIVO_AUXILIAR", "DERIVADO_GENERADO"}:
+        comparison = find_record(records, "comparison_features")
+        return bool(comparison.get("text_length"))
+    return False
+
+
+def output_paths(source: Path) -> dict[str, Path]:
+    return {
+        "jsonl": source.with_name(source.name + ".jsonl"),
+        "markdown": source.with_name(source.name + ".md"),
+        "sha256": source.with_name(source.name + ".sha256"),
+    }
+
+
+def validate_bundle(stage: Path, source: Path, include_jsonl: bool, include_markdown: bool) -> None:
+    paths = output_paths(source)
+    staged_jsonl = stage / paths["jsonl"].name
+    staged_md = stage / paths["markdown"].name
+    staged_sha = stage / paths["sha256"].name
+    if not staged_sha.is_file() or staged_sha.read_text(encoding="utf-8") != sha256_text(source):
+        raise ValueError("Archivo SHA-256 inv√°lido o no corresponde al original.")
+    if include_jsonl:
+        records = validate_jsonl(staged_jsonl, source)
+        if include_markdown:
+            expected = render_markdown(records, sha256_file(staged_jsonl))
+            if staged_md.read_text(encoding="utf-8") != expected:
+                raise ValueError("El Markdown no fue generado exclusivamente desde el JSONL validado.")
+        elif staged_md.exists():
+            raise ValueError("Se gener√≥ Markdown no autorizado para este rol.")
+    else:
+        if staged_jsonl.exists() or staged_md.exists():
+            raise ValueError("El rol solo autoriza SHA-256.")
+
+
+def publish_bundle(stage: Path, source: Path, desired: set[str]) -> None:
+    paths = output_paths(source)
+    managed = {key: value for key, value in paths.items()}
+    for destination in managed.values():
+        if destination.is_symlink() or (destination.exists() and not destination.is_file()):
+            raise ValueError(f"Colisi√≥n insegura en derivado lateral: {destination}")
+    backup = Path(tempfile.mkdtemp(prefix=f".{source.name}.lhm-backup-", dir=source.parent))
+    moved_old: list[tuple[Path, Path]] = []
+    published: list[Path] = []
+    keep_backup = False
+    try:
+        for key, destination in managed.items():
+            if destination.exists():
+                old = backup / destination.name
+                os.replace(destination, old)
+                moved_old.append((old, destination))
+        for key in ("jsonl", "markdown", "sha256"):
+            if key not in desired:
+                continue
+            staged = stage / paths[key].name
+            os.replace(staged, paths[key])
+            published.append(paths[key])
+    except Exception as publish_error:
+        for destination in published:
+            if destination.exists():
+                destination.unlink()
+        restore_errors = []
+        for old, destination in reversed(moved_old):
+            if old.exists():
+                try:
+                    os.replace(old, destination)
+                except Exception as restore_error:
+                    restore_errors.append(f"{destination}: {restore_error}")
+        if restore_errors:
+            keep_backup = True
+            raise RuntimeError(
+                "Fall√≥ la publicaci√≥n lateral y la restauraci√≥n no fue completa; "
+                f"los derivados recuperables permanecen en {backup}: {'; '.join(restore_errors)}"
+            ) from publish_error
+        raise publish_error
+    finally:
+        if not keep_backup:
+            shutil.rmtree(backup, ignore_errors=True)
+
+
+def load_enrichment(path: Path | None) -> dict[str, Any]:
+    if path is None:
+        return {}
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError("El enriquecimiento IA debe ser un objeto por ruta relativa.")
+    return value
+
+
+def prepare_descriptors(target: Path) -> tuple[Path, list[dict[str, Any]]]:
+    root = target if target.is_dir() else target.parent
+    descriptors = []
+    for path in iter_sources(target):
+        role, basis = preliminary_role(path)
+        digest = sha256_file(path)
+        descriptors.append({"path": path, "hash": digest, "size": path.stat().st_size, "role": role, "basis": basis, "stem": path.stem, "extension": path.suffix.lower()})
+    by_hash: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for item in descriptors:
+        by_hash[item["hash"]].append(item)
+    for items in by_hash.values():
+        if len(items) > 1:
+            for duplicate in sorted(items, key=lambda item: item["path"].relative_to(root).as_posix())[1:]:
+                duplicate["role"] = "RESPALDO_COPIA"
+                duplicate["basis"] = "DUPLICADO_EXACTO_SHA256"
+    by_stem: dict[tuple[Path, str], list[dict[str, Any]]] = defaultdict(list)
+    for item in descriptors:
+        by_stem[(item["path"].parent, item["stem"])].append(item)
+    for items in by_stem.values():
+        technical = next((item for item in items if item["extension"] in TECHNICAL_PRIMARY and item["role"] == "FUENTE_PRIMARIA"), None)
+        if technical:
+            for item in items:
+                if item is not technical and item["extension"] in GENERATED_CANDIDATES and item["role"] == "FUENTE_PRIMARIA":
+                    item["role"] = "DERIVADO_GENERADO"
+                    item["basis"] = f"MISMO_NOMBRE_BASE_QUE_{technical['path'].name}"
+                    item["relation"] = {"relation_type": "GENERADO_POR", "target_filename": technical["path"].name, "status": "PROBABLE"}
+                elif item["role"] == "ARCHIVO_AUXILIAR":
+                    item["relation"] = {"relation_type": "DEPENDE_DE", "target_filename": technical["path"].name, "status": "PROBABLE"}
+                elif item["role"] == "RESPALDO_COPIA":
+                    item["relation"] = {"relation_type": "RESPALDO_DE", "target_filename": technical["path"].name, "status": "PROBABLE"}
+        else:
+            candidates = sorted(
+                (item for item in items if item["role"] == "FUENTE_PRIMARIA"),
+                key=lambda item: item["path"].name,
+            )
+            if len(candidates) > 1:
+                text_hashes: dict[str, list[dict[str, Any]]] = defaultdict(list)
+                for item in candidates:
+                    _, text_value, _, _, _ = deterministic_extract(item["path"], item["role"])
+                    normalized = normalized_text(text_value)
+                    if normalized:
+                        text_hashes[hashlib.sha256(normalized.encode()).hexdigest()].append(item)
+                associated_ids: set[int] = set()
+                for matching in text_hashes.values():
+                    if len(matching) < 2:
+                        continue
+                    canonical = matching[0]
+                    for item in matching[1:]:
+                        item["role"] = "MANIFESTACION_ASOCIADA"
+                        item["basis"] = "NOMBRE_BASE_EXACTO_Y_HASH_TEXTO_NORMALIZADO_COINCIDENTE"
+                        item["relation"] = {
+                            "relation_type": "MANIFESTACION_DE", "target_filename": canonical["path"].name,
+                            "status": "CONFIRMADA", "evidence": "NORMALIZED_TEXT_HASH_MATCH",
+                        }
+                        associated_ids.add(id(item))
+                canonical = candidates[0]
+                for item in candidates[1:]:
+                    if id(item) not in associated_ids:
+                        item["relation"] = {
+                            "relation_type": "RELACIONADO_CON", "target_filename": canonical["path"].name,
+                            "status": "POSIBLE", "evidence": "NOMBRE_BASE_EXACTO_SIN_EVIDENCIA_DE_CONTENIDO_SUFFICIENTE",
+                        }
+    return root, descriptors
+
+
+def process_one(item: dict[str, Any], root: Path, enrichment: dict[str, Any], forced_failure: bool = False) -> dict[str, Any]:
+    source: Path = item["path"]
+    original_hash = item["hash"]
+    role = item["role"]
+    if role == "TEMPORAL_CACHE":
+        return {"source": str(source), "role": role, "status": "DETECTADO_SIN_DERIVADOS"}
+    include_jsonl = role != "RESPALDO_COPIA"
+    stage = Path(tempfile.mkdtemp(prefix=f".{source.name}.lhm-stage-", dir=source.parent))
+    try:
+        paths = output_paths(source)
+        desired = {"sha256"}
+        (stage / paths["sha256"].name).write_text(sha256_text(source), encoding="utf-8")
+        include_md = False
+        if include_jsonl:
+            relative = source.relative_to(root).as_posix() if root.is_dir() else source.name
+            records = build_records(source, root, role, item["basis"], [item["relation"]] if item.get("relation") else [], enrichment.get(relative))
+            staged_jsonl = stage / paths["jsonl"].name
+            write_jsonl(staged_jsonl, records)
+            validate_jsonl(staged_jsonl, source)
+            desired.add("jsonl")
+            include_md = wants_markdown(role, records)
+            if include_md:
+                (stage / paths["markdown"].name).write_text(render_markdown(records, sha256_file(staged_jsonl)), encoding="utf-8")
+                desired.add("markdown")
+        if forced_failure:
+            raise ValueError("Fallo de validaci√≥n solicitado para prueba.")
+        validate_bundle(stage, source, include_jsonl, include_md)
+        if source.stat().st_size != item["size"] or sha256_file(source) != original_hash:
+            raise ValueError("El original cambi√≥ durante el procesamiento; no se publican derivados.")
+        publish_bundle(stage, source, desired)
+        return {"source": str(source), "role": role, "status": "GENERADO", "outputs": [str(output_paths(source)[key]) for key in sorted(desired)], "original_modified": False}
+    finally:
+        shutil.rmtree(stage, ignore_errors=True)
+
+
+def process(target: Path, enrichment_path: Path | None = None, forced_failure: bool = False) -> dict[str, Any]:
+    target = target.resolve()
+    if OUTPUT_80 in target.parts:
+        return {"estado": "BLOQUEADO", "modo": PROCESSING_MODE, "motivo": f"{OUTPUT_80} no puede ser fuente.", "acciones_ejecutadas": "Ninguna."}
+    if not target.exists() or target.is_symlink() or not (target.is_file() or target.is_dir()):
+        raise ValueError("La ruta debe ser un archivo o carpeta ordinaria existente.")
+    root, descriptors = prepare_descriptors(target)
+    enrichment = load_enrichment(enrichment_path)
+    results = []
+    for item in descriptors:
+        results.append(process_one(item, root, enrichment, forced_failure))
+    return {
+        "estado": "COMPLETADO", "modo": PROCESSING_MODE, "ruta_analizada": str(target),
+        "recursos_detectados": len(descriptors), "resultados": results,
+        "originales_modificados": False, "version_skill": SKILL_VERSION,
+        "nota": "No se clasificaron, movieron, renombraron, fusionaron ni eliminaron originales.",
+    }
+
+
+def dry_run(target: Path) -> dict[str, Any]:
+    target = target.resolve()
+    if OUTPUT_80 in target.parts:
+        return {"estado": "BLOQUEADO", "modo": PROCESSING_MODE, "motivo": f"{OUTPUT_80} no puede ser fuente."}
+    root, descriptors = prepare_descriptors(target)
+    return {
+        "estado": "APROBADO", "modo": PROCESSING_MODE, "ruta_analizada": str(target),
+        "recursos": [
+            {"ruta_relativa": item["path"].relative_to(root).as_posix() if root.is_dir() else item["path"].name, "role": item["role"], "basis": item["basis"]}
+            for item in descriptors
+        ],
+        "destino": "DERIVADOS_LATERALES_JUNTO_A_CADA_ORIGINAL",
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("ruta", type=Path)
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--ai-enrichment", type=Path)
+    parser.add_argument("--force-validation-failure", action="store_true", help=argparse.SUPPRESS)
+    args = parser.parse_args()
+    try:
+        report = dry_run(args.ruta) if args.dry_run else process(args.ruta, args.ai_enrichment, args.force_validation_failure)
+    except Exception as exc:
+        report = {"estado": "ERROR", "modo": PROCESSING_MODE, "motivo": f"{type(exc).__name__}: {exc}", "acciones": "No se publicaron derivados incompletos."}
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 1
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return 2 if report["estado"] == "BLOQUEADO" else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
