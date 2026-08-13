@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 import hashlib
 import json
 import subprocess
@@ -28,7 +25,7 @@ class GenerarPanelTest(unittest.TestCase):
             "sha256": digest,
             "fecha": {"fecha_efectiva": "2026-08-13"},
             "clasificacion": {"clasificaciones": [{"codigo": "OCI-VAR-PAN"}]},
-            "guia_humana": {"descripcion_manual": "InstalaciÃ³n de panel de junta"},
+            "guia_humana": {"descripcion_manual": "Instalación de panel de junta"},
         }
         self.catalog = self.root / "catalogo.jsonl"
         self.catalog.write_text(json.dumps(record, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -70,4 +67,3 @@ class GenerarPanelTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
