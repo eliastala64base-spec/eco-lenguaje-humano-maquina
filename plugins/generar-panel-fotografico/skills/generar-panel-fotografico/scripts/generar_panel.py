@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 #!/usr/bin/env python3
 from __future__ import annotations
 
@@ -30,7 +27,7 @@ def load_jsonl(path: Path) -> list[dict]:
             continue
         value = json.loads(line)
         if not isinstance(value, dict):
-            raise ValueError(f"La lÃ­nea {number} no contiene un objeto JSON")
+            raise ValueError(f"La línea {number} no contiene un objeto JSON")
         records.append(value)
     return records
 
@@ -58,7 +55,7 @@ def codes_for(record: dict) -> set[str]:
 def record_path(project_root: Path, record: dict) -> Path:
     value = record.get("ruta_relativa") or record.get("nombre_actual") or record.get("nombre_controlado")
     if not value:
-        raise ValueError("Registro sin ruta o nombre de fotografÃ­a")
+        raise ValueError("Registro sin ruta o nombre de fotografía")
     candidate = (project_root / str(value)).resolve()
     candidate.relative_to(project_root.resolve())
     return candidate
@@ -67,7 +64,7 @@ def record_path(project_root: Path, record: dict) -> Path:
 def description_for(record: dict) -> str:
     guide = record.get("guia_humana") or {}
     text = guide.get("descripcion_manual") or record.get("descripcion_aprobada") or record.get("descripcion_propuesta")
-    return str(text or "DescripciÃ³n pendiente de revisiÃ³n humana").strip()
+    return str(text or "Descripción pendiente de revisión humana").strip()
 
 
 def effective_date(record: dict) -> str:
@@ -101,16 +98,16 @@ figcaption {{ border-top: 1px solid #333; padding: 1.5mm 2mm; font-size: 8.5pt; 
 figcaption small {{ display: block; color: #555; margin-top: 1mm; font-size: 7pt; }}
 footer {{ border: 1px solid #222; padding: 2mm; font-size: 8pt; display: flex; justify-content: space-between; }}
 </style></head><body><main class="page">
-<section><header><strong>Panel fotogrÃ¡fico</strong><span>{html.escape(panel["title"])}</span></header>
+<section><header><strong>Panel fotográfico</strong><span>{html.escape(panel["title"])}</span></header>
 <div class="meta"><div><b>Proyecto:</b> {html.escape(panel["project_name"])}</div><div><b>Cliente:</b> {html.escape(panel["client"])}</div>
-<div><b>Componente:</b> {html.escape(panel["component"])}</div><div><b>Ãrea:</b> {html.escape(panel["area"])}</div></div></section>
+<div><b>Componente:</b> {html.escape(panel["component"])}</div><div><b>Área:</b> {html.escape(panel["area"])}</div></div></section>
 <section class="photos">{''.join(cards)}</section>
-<footer><span>{html.escape(panel["panel_id"])}</span><span>BORRADOR Â· revisiÃ³n humana pendiente</span></footer>
+<footer><span>{html.escape(panel["panel_id"])}</span><span>BORRADOR · revisión humana pendiente</span></footer>
 </main></body></html>'''
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Genera un paquete HTML de panel fotogrÃ¡fico trazable")
+    parser = argparse.ArgumentParser(description="Genera un paquete HTML de panel fotográfico trazable")
     parser.add_argument("--project-root", required=True)
     parser.add_argument("--catalog", required=True)
     parser.add_argument("--output-root", required=True)
@@ -121,7 +118,7 @@ def main() -> int:
     parser.add_argument("--client", default="PENDIENTE")
     parser.add_argument("--component", default="PENDIENTE")
     parser.add_argument("--area", default="PENDIENTE")
-    parser.add_argument("--title", default="Registro fotogrÃ¡fico")
+    parser.add_argument("--title", default="Registro fotográfico")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -177,7 +174,7 @@ def main() -> int:
         target = media / source.name
         shutil.copy2(source, target)
         if sha256(target) != digest or sha256(source) != digest:
-            raise RuntimeError(f"FallÃ³ la verificaciÃ³n de copia: {source.name}")
+            raise RuntimeError(f"Falló la verificación de copia: {source.name}")
         photos.append({
             "order": index,
             "source_path": str(source),
@@ -221,4 +218,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
