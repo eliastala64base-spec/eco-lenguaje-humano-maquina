@@ -1,0 +1,23 @@
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
+{
+  "name": "generar-panel-fotografico",
+  "version": "0.1.0-alpha.1",
+  "description": "Genera paquetes de panel fotogrÃ¡fico trazables desde catÃ¡logos JSONL sin modificar las fuentes.",
+  "author": {
+    "name": "Elias Tala Allca",
+    "url": "https://github.com/eliastala64base-spec"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Generar panel fotogrÃ¡fico",
+    "shortDescription": "Paneles trazables desde catÃ¡logos fotogrÃ¡ficos.",
+    "longDescription": "Selecciona fotografÃ­as por cÃ³digos, verifica SHA-256 y genera paquetes HTML A4 con datos estructurados, manifiesto y checksums para revisiÃ³n humana.",
+    "developerName": "Elias Tala Allca",
+    "category": "Productivity",
+    "capabilities": ["Write"],
+    "defaultPrompt": "Genera un panel fotogrÃ¡fico trazable desde mi catÃ¡logo sin modificar las fuentes."
+  }
+}
+
