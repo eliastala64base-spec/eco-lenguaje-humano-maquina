@@ -1,17 +1,14 @@
-Exit code: 0
-Wall time: 0.3 seconds
-Output:
 # Contrato del panel
 
 ## Entradas
 
-- raÃ­z de fotografÃ­as;
-- catÃ¡logo JSONL, un registro por foto;
-- uno o mÃ¡s cÃ³digos de selecciÃ³n;
+- raíz de fotografías;
+- catálogo JSONL, un registro por foto;
+- uno o más códigos de selección;
 - identificador de panel;
 - metadatos de encabezado opcionales.
 
-## Campos nativos del catÃ¡logo
+## Campos nativos del catálogo
 
 - `sha256` o `foto_id`;
 - `nombre_actual`, `nombre_controlado` o `ruta_relativa`;
@@ -25,16 +22,15 @@ Output:
 ## Estados
 
 - paquete generado: `BORRADOR`;
-- publicaciÃ³n: `RESTRINGIDO`;
-- aprobaciÃ³n: `PENDIENTE_REVISION_HUMANA`;
-- preservaciÃ³n: no asignar automÃ¡ticamente.
+- publicación: `RESTRINGIDO`;
+- aprobación: `PENDIENTE_REVISION_HUMANA`;
+- preservación: no asignar automáticamente.
 
-## Trazabilidad mÃ­nima
+## Trazabilidad mínima
 
-Registrar generador y versiÃ³n, catÃ¡logo y hash, cÃ³digos solicitados, fotos candidatas, fotos seleccionadas, nombre fuente, nombre derivado, SHA-256, fecha efectiva, descripciÃ³n y advertencias.
+Registrar generador y versión, catálogo y hash, códigos solicitados, fotos candidatas, fotos seleccionadas, nombre fuente, nombre derivado, SHA-256, fecha efectiva, descripción y advertencias.
 
-## RegeneraciÃ³n
+## Regeneración
 
-Una modificaciÃ³n de entradas genera un `PANEL_ID` nuevo o una nueva ejecuciÃ³n identificable. No mezclar residuos de dos ejecuciones ni sustituir silenciosamente un paquete anterior.
-
+Una modificación de entradas genera un `PANEL_ID` nuevo o una nueva ejecución identificable. No mezclar residuos de dos ejecuciones ni sustituir silenciosamente un paquete anterior.
 
