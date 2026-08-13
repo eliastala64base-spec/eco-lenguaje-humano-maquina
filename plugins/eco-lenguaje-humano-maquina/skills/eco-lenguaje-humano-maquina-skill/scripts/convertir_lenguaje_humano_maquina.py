@@ -358,7 +358,18 @@ def build_document(unit_dir: Path, scope: str, base: str, records: list[dict[str
         for record in records
         for warning in record["advertencias_de_lectura"]
     ]
-    qua˜Ω≠¢Gß≤⁄Óù∆≠y–graph = {
+    quality = {"errores_criticos": [], "advertencias": [*warnings, *source_warnings], "revision_canonica": revision,
+               "fuentes_principales_por_revision": {key: value["nombre_archivo"] for key, value in selected.items()},
+               "fuentes_legibles": len(selected), "fuentes_total": len(records)}
+    public_records = [puÔùÌ¢Gß≤⁄Óù∆≠y‘["hash"],
+            "eco:rutaRelativa": record["ruta_relativa"],
+            "eco:nombreArchivo": record["nombre_archivo"],
+            "eco:revisionDetectada": record["revision_detectada"],
+            "eco:rol": record["rol"],
+        }
+        for record in public_records
+    ]
+    graph = {
         "@context": {
             "eco": "https://ecosistema.local/vocab/",
             "prov": "http://www.w3.org/ns/prov#",
