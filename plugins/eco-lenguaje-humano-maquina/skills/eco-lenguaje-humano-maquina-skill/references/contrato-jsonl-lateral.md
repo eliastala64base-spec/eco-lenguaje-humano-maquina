@@ -25,7 +25,7 @@
 
 Cada línea es un objeto JSON independiente con `record_type`. Exigir exactamente una línea de cada universal: `manifest`, `source_metadata`, `integrity`, `file_role`, `format_information`, `summary`, `keywords`, `quality`, `warnings` y `end`. `warnings` agrega códigos y puede tener cero; `warning` solo aparece por cada limitación real. No crear registros condicionales vacíos.
 
-`manifest` usa `schema_name: lenguaje_humano_maquina`, `schema_version: 2` y `processing_mode: RECURSO_UNICO_LATERAL`. `integrity` contiene SHA-256 y tamaño. `file_role` aclara que el rol no es clasificación final. `security` confirma que no se ejecutó contenido. `end` repite el hash y estado.
+`manifest` usa `schema_name: lenguaje_humano_maquina`, `schema_version: 2` y `processing_mode: RECURSO_PORTABLE_LATERAL`. `integrity` contiene SHA-256 y tamaño. `file_role` aclara que el rol no es clasificación final. `security` confirma que no se ejecutó contenido. `end` repite el hash y estado.
 
 ## Rutas universales para Python
 

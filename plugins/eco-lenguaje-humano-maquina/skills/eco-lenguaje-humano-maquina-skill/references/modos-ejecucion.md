@@ -2,20 +2,27 @@
 
 ## Selección
 
-Usar `REVISION_CONTROLADA_80` para documentación propia/controlada. Usar `RECURSO_UNICO_LATERAL` para materiales externos, de terceros o ediciones únicas. La decisión describe procedencia/control, no formato.
+Usar:
+
+- `DOCUMENTO_CONTROLADO` para una unidad documental con revisiones `Rev.*`.
+- `RECURSO_CENTRALIZADO` para recursos de un proyecto o área que deben mantener limpias sus carpetas fuente.
+- `RECURSO_PORTABLE_LATERAL` solo para entregar los derivados junto al original por portabilidad expresa.
+
+Aceptar `REVISION_CONTROLADA_80` y `RECURSO_UNICO_LATERAL` como alias heredados, sin usarlos en registros nuevos.
 
 `AUTO` solo acepta:
 
-- Ancestro exacto `02_PROYECTOS_INDEPENDIENTES` → lateral.
-- Ancestro exacto `03_PROYECTOS_DEPENDIENTES` → controlado.
-- Carpetas `Rev.*` hijas directas → controlado.
+- Revisiones `Rev.*` hijas directas → `DOCUMENTO_CONTROLADO`.
+- Ancestro exacto `02_PROYECTOS_INDEPENDIENTES` o `03_PROYECTOS_DEPENDIENTES` → `RECURSO_CENTRALIZADO`.
 
-Fuera de esos casos exigir modo explícito. No usar la ausencia de revisión como prueba de que un recurso es externo.
+Fuera de esos casos exigir modo explícito.
 
 ## Flujos
 
-Controlado: topología → prevalidación de `80_LENGUAJE_HUMANO_MAQUINA` → revisiones → unidades exactas → prelación → extracción → validación → publicación completa.
+Controlado: topología → prevalidación → revisiones → fuentes → extracción → validación → única carpeta `80_LENGUAJE_HUMANO_MAQUINA`.
 
-Lateral: inventario seguro → roles → hash/duplicados exactos → extracción estática → JSONL → validación → Markdown desde JSONL → verificación de hash → publicación junto a cada original.
+Centralizado: proyecto/área → inventario → SHA-256 → fingerprint → extracción necesaria → paquete por hash/fingerprint → actualización de `99_CONTROL`.
 
-Los modos nunca se ejecutan uno sobre los derivados del otro. En lateral, omitir árboles `80_LENGUAJE_HUMANO_MAQUINA`; en controlado, bloquear una ubicación interna no esperada.
+Portable: archivo → inspección → SHA-256 → JSONL → Markdown derivado → publicación lateral atómica.
+
+No ejecutar un modo sobre derivados de otro. Omitir cualquier árbol `80_LENGUAJE_HUMANO_MAQUINA` durante el inventario.

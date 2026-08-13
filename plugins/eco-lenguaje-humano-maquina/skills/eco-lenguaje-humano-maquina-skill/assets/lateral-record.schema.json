@@ -21,7 +21,7 @@
     },
     "schema_name": {"const": "lenguaje_humano_maquina"},
     "schema_version": {"const": 2},
-    "processing_mode": {"const": "RECURSO_UNICO_LATERAL"},
+    "processing_mode": {"const": "RECURSO_PORTABLE_LATERAL"},
     "source_filename": {"type": "string", "minLength": 1},
     "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "source_size_bytes": {"type": "integer", "minimum": 0},

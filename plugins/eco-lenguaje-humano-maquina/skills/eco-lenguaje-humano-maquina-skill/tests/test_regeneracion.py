@@ -86,7 +86,10 @@ class Regeneracion80Tests(unittest.TestCase):
         target = self.root / "destino_externo"
         target.mkdir()
         destination = self.root / lhm.OUTPUT_NAME
-        destination.symlink_to(target, target_is_directory=True)
+        try:
+            destination.symlink_to(target, target_is_directory=True)
+        except OSError as exc:
+            self.skipTest(f"El entorno no permite crear symlinks: {exc}")
         report = lhm.generate(self.root)
         self.assertEqual(report["estado"], "BLOQUEADO")
         self.assertTrue(report["conflicto_en_destino_directo"])
@@ -114,8 +117,8 @@ class Regeneracion80Tests(unittest.TestCase):
         dependent = Path(self.temp.name) / "03_PROYECTOS_DEPENDIENTES" / "documento"
         independent.mkdir(parents=True)
         dependent.mkdir(parents=True)
-        self.assertEqual(lhm.detect_execution_mode(independent, "AUTO"), lhm.MODE_LATERAL)
-        self.assertEqual(lhm.detect_execution_mode(dependent, "AUTO"), lhm.MODE_CONTROLLED)
+        self.assertEqual(lhm.detect_execution_mode(independent, "AUTO"), lhm.MODE_CENTRAL)
+        self.assertEqual(lhm.detect_execution_mode(dependent, "AUTO"), lhm.MODE_CENTRAL)
         with self.assertRaisesRegex(ValueError, "Modo ambiguo"):
             lhm.detect_execution_mode(self.root, "AUTO")
 
@@ -126,7 +129,7 @@ class Regeneracion80Tests(unittest.TestCase):
         write_blank_pdf(revision / "MATRIZ.pdf")
         write_blank_pdf(revision / "MATRIZ_FINAL.pdf")
         lhm.generate(self.root)
-        sources = json.loads((self.root / lhm.OUTPUT_NAME / "MATRIZ" / "90_CONTROL_DOCUMENTO" / "fuentes_asociadas.json").read_text())
+        sources = json.loads((self.root / lhm.OUTPUT_NAME / "MATRIZ" / "99_CONTROL" / "fuentes_asociadas.json").read_text())
         self.assertEqual(next(x for x in sources if x["nombre_archivo"] == "MATRIZ.csv")["rol"], "principal")
         self.assertTrue((self.root / lhm.OUTPUT_NAME / "MATRIZ_FINAL").is_dir())
 
@@ -202,14 +205,20 @@ class Regeneracion80Tests(unittest.TestCase):
         self.assertFalse((destination / "nuevo.txt").exists())
 
     def test_sanitized_name_collision_does_not_replace_previous_output(self):
-        (self.root / "A:B.csv").write_text("x\n1\n", encoding="utf-8")
-        (self.root / "A?B.csv").write_text("x\n2\n", encoding="utf-8")
+        (self.root / "A-B.csv").write_text("x\n1\n", encoding="utf-8")
+        (self.root / "A_B.csv").write_text("x\n2\n", encoding="utf-8")
         old = self.root / lhm.OUTPUT_NAME
         old.mkdir()
         sentinel = old / "anterior.txt"
         sentinel.write_text("conservar", encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "misma ruta derivada"):
-            lhm.generate(self.root)
+        real_safe_name = lhm.safe_name
+        with mock.patch.object(
+            lhm,
+            "safe_name",
+            side_effect=lambda value: "COLLISION" if value in {"A-B", "A_B"} else real_safe_name(value),
+        ):
+            with self.assertRaisesRegex(ValueError, "misma ruta derivada"):
+                lhm.generate(self.root)
         self.assertEqual(sentinel.read_text(encoding="utf-8"), "conservar")
 
     def test_validation_failure_keeps_previous_direct_output_and_original(self):

@@ -1,126 +1,100 @@
 ---
 name: eco-lenguaje-humano-maquina-skill
-description: Transforma carpetas documentales autorizadas y recursos externos en derivados humanos y de máquina trazables, regenerables y seguros. Use when the user asks to extraer, normalizar, preparar para Obsidian, comparar duplicados o crear lenguaje humano–máquina para documentos propios con revisiones en 80_LENGUAJE_HUMANO_MAQUINA o para recursos únicos/externos con JSONL, Markdown y SHA-256 laterales; admite documentos, hojas, presentaciones, CAD/BIM/GIS, imágenes, audio, video, correo, bases, código, contenedores y binarios mediante inspección estática.
+description: Transformar fuentes documentales autorizadas en representaciones humanas y de máquina trazables sin modificar originales. Usar al extraer, normalizar, preparar para Obsidian, generar JSONL/Markdown/JSON-LD, verificar SHA-256, comparar duplicados o actualizar derivados de documentos controlados y recursos de proyectos personales, independientes o dependientes. Centralizar por defecto los derivados en 80_LENGUAJE_HUMANO_MAQUINA y usar salidas laterales solo cuando el usuario solicite un paquete portable.
 ---
 
 # Lenguaje Humano–Máquina
 
-Versión técnica vigente: `v0.4.1`.
+Versión técnica: `v0.5.0-beta.1`.
 
-## Propósito y límite
+## Propósito
 
-Transformar fuentes autorizadas sin modificar, mover, renombrar, borrar ni sustituir originales. Terminar con:
+Conservar cada original intacto y producir representaciones regenerables para personas, Obsidian, Python, IA y grafos. No decidir clasificación final, permisos, publicación, venta, licencia, `Rev.00`, línea base, OAIS definitivo ni eliminación.
 
-```text
-ORIGINAL INTACTO
-+ REPRESENTACIÓN ESTRUCTURADA PARA MÁQUINA
-+ REPRESENTACIÓN RESUMIDA PARA PERSONA
-+ HUELLA DE INTEGRIDAD
-```
+Interpretar «carpeta 80» exclusivamente como `80_LENGUAJE_HUMANO_MAQUINA`. Reservar `99_CONTROL` para controles. No crear otra carpeta iniciada por `80_` o `99_` con significado diferente.
 
-Preparar para consulta, Obsidian, automatización, comparación e incorporación futura a ECOSISTEMA. No decidir clasificación final, carpeta/proyecto/acceso, publicación, venta, OAIS definitivo, `Rev.00`, eliminación/fusión, base de datos, embeddings ni Graphiti operativo.
+## Inicio obligatorio
 
-Interpretar “carpeta 80”, “la 80” o “directorio 80” exclusivamente como `80_LENGUAJE_HUMANO_MAQUINA`. Usar siempre el nombre completo en rutas, reportes y decisiones.
+1. Leer las reglas desde la ruta objetivo hasta la raíz.
+2. Leer `references/modos-ejecucion.md`, `references/contrato-salida.md`, `references/numeracion-reservada.md` y `references/regeneracion-fingerprint.md`.
+3. Leer las referencias de revisión y formato cuando correspondan.
+4. Identificar el proyecto o área propietario y sus permisos.
+5. Ejecutar primero con `--dry-run`.
+6. No mover, renombrar, sobrescribir, eliminar ni ejecutar originales o contenido activo.
 
-Antes de operar, leer las reglas aplicables desde la ruta hasta la raíz y las referencias:
-
-- `references/modos-ejecucion.md`: selección del modo y topologías.
-- `references/contrato-salida.md`: salidas y publicación segura.
-- `references/seleccion-revision.md`: revisión, asociación y prelación del modo controlado.
-- `references/contrato-jsonl-lateral.md`: jerarquía y contrato del modo lateral.
-- `references/roles-y-formatos.md`: roles, familias y profundidad segura.
-- `references/modelo-normalizacion.md`: autoridad, Obsidian, IA y etapas posteriores.
-- `references/perfiles-formato.md`: capacidades y limitaciones por formato.
-
-## Elegir obligatoriamente un modo
+## Seleccionar un modo
 
 ```yaml
 execution_modes:
-  - REVISION_CONTROLADA_80
-  - RECURSO_UNICO_LATERAL
+  - DOCUMENTO_CONTROLADO
+  - RECURSO_CENTRALIZADO
+  - RECURSO_PORTABLE_LATERAL
 ```
 
-No inferir autoría por formato, nombre ni ausencia de revisiones. Usar el modo declarado por el usuario. `AUTO` solo es válido cuando una ruta ancestral llamada exactamente `02_PROYECTOS_INDEPENDIENTES` determina `RECURSO_UNICO_LATERAL`, una llamada `03_PROYECTOS_DEPENDIENTES` determina `REVISION_CONTROLADA_80`, o existen revisiones `Rev.*` hijas directas que determinan el modo controlado. Si no hay evidencia inequívoca, detener y pedir/indicar `--mode`.
+### `DOCUMENTO_CONTROLADO`
 
-Ejecutar primero:
+Usar cuando la unidad tiene revisiones `Rev.A`, `Rev.B`, `Rev.00`, `Rev.01`, etc. Seleccionar la emisión aplicable conforme a `references/seleccion-revision.md` y generar una sola `80_LENGUAJE_HUMANO_MAQUINA` en el documento lógico o contenedor indicado.
+
+### `RECURSO_CENTRALIZADO`
+
+Usar por defecto dentro de proyectos personales, independientes y dependientes. Mantener limpios los directorios fuente y generar los derivados en la única carpeta `80_LENGUAJE_HUMANO_MAQUINA` del proyecto o área propietaria.
+
+Organizar cada manifestación por SHA-256 y fingerprint de procesamiento. Si ambos siguen vigentes, no extraer nuevamente. Si cambia el original, crear una nueva manifestación. Si cambia la skill, esquema, extractor, configuración, prompt, modelo o enriquecimiento, generar un fingerprint nuevo sin sustituir paquetes anteriores.
+
+### `RECURSO_PORTABLE_LATERAL`
+
+Usar únicamente cuando el usuario solicite portabilidad junto al original o cuando no exista un proyecto/área propietario. Crear `archivo.ext.jsonl`, `archivo.ext.md` cuando aporte lectura humana y `archivo.ext.sha256`. No usar este modo como predeterminado dentro de ECOSISTEMA.
+
+Aceptar `REVISION_CONTROLADA_80` y `RECURSO_UNICO_LATERAL` solo como alias de compatibilidad; informar siempre el nombre canónico actual.
+
+`AUTO` debe elegir `DOCUMENTO_CONTROLADO` si existen revisiones directas y `RECURSO_CENTRALIZADO` dentro de proyectos independientes o dependientes. Detenerse si la evidencia es ambigua.
+
+## Ejecutar
 
 ```text
-python scripts/convertir_lenguaje_humano_maquina.py RUTA --mode MODO --dry-run
+python scripts/convertir_lenguaje_humano_maquina.py RUTA --mode RECURSO_CENTRALIZADO --dry-run
+python scripts/convertir_lenguaje_humano_maquina.py RUTA --mode RECURSO_CENTRALIZADO
 ```
 
-Informar la prevalidación. Continuar solo con estado `APROBADO`.
-
-## Modo `REVISION_CONTROLADA_80`
-
-Aplicar a documentos propios/controlados y entregables con `Rev.A`, `Rev.B`, `Rev.00`, `Rev.01`, etc. Conservar íntegramente el comportamiento compatible de `v0.3.1`:
-
-1. Usar el orden `topología → prevalidación → revisión → nombre base exacto → fuente principal → extracción`.
-2. Elegir la revisión numérica más alta; si no existe numérica, la alfabética más alta. Registrar todas sin mezclar emisiones.
-3. Asociar manifestaciones solo si el nombre base completo sin extensión coincide exactamente y pertenecen al mismo contexto de revisión.
-4. Elegir por revisión: `Excel → Word → PDF → CAD editable → imagen`. Mantener las demás como asociadas.
-5. Generar únicamente `80_LENGUAJE_HUMANO_MAQUINA` en el destino directo definido por la topología.
-
-Prevalidar antes de escribir:
-
-- Bloquear si la ruta es `80_LENGUAJE_HUMANO_MAQUINA` o está dentro de ella.
-- Permitir regenerar una `80_LENGUAJE_HUMANO_MAQUINA` exactamente en el destino directo: construir temporalmente, validar y sustituir por completo sin mezclar residuos.
-- Bloquear si existe otra `80_LENGUAJE_HUMANO_MAQUINA` en subcarpetas del ámbito.
-- Bloquear archivos, enlaces simbólicos o colisiones en el destino.
-- Mantener la salida anterior si falla generación, validación o publicación; restaurarla si falla el intercambio.
-
-Usar `CASO_01_AREA_O_CARPETA_CONTENEDORA` cuando el destino es `RUTA/80_LENGUAJE_HUMANO_MAQUINA`. Usar `CASO_02_DOCUMENTO_LOGICO_CONTROLADO` cuando la ruta entregada contiene `Rev.*` como hijas: la salida queda dentro de ese documento lógico, al nivel de `Rev.*`.
-
-## Modo `RECURSO_UNICO_LATERAL`
-
-Aplicar a recursos externos, de terceros o ediciones únicas. No crear `80_LENGUAJE_HUMANO_MAQUINA`, subcarpetas por archivo, TXT, CSV, SQLite ni JSON separados. No procesar una `80_LENGUAJE_HUMANO_MAQUINA` como fuente. Al recorrer una carpeta, omitir cualquier árbol `80_LENGUAJE_HUMANO_MAQUINA`; bloquear si la ruta entregada está dentro de uno.
-
-Para una fuente primaria crear junto al original:
+Opciones principales:
 
 ```text
-NOMBRE_COMPLETO_ORIGINAL.ext
-NOMBRE_COMPLETO_ORIGINAL.ext.jsonl
-NOMBRE_COMPLETO_ORIGINAL.ext.md
-NOMBRE_COMPLETO_ORIGINAL.ext.sha256
+--output-root RUTA/80_LENGUAJE_HUMANO_MAQUINA
+--configuration-hash HASH_CONFIGURACION
+--ai-enrichment ARCHIVO_JSON
 ```
 
-Usar el nombre completo, incluida la extensión, como prefijo. Para `configuracion.json`, crear `configuracion.json.jsonl`, `configuracion.json.md` y `configuracion.json.sha256`.
+Exigir que `--output-root` termine exactamente en `80_LENGUAJE_HUMANO_MAQUINA`.
 
-Asignar antes un rol operativo no definitivo: `FUENTE_PRIMARIA`, `MANIFESTACION_ASOCIADA`, `ARCHIVO_AUXILIAR`, `DERIVADO_GENERADO`, `RESPALDO_COPIA`, `CONTENEDOR`, `BASE_DATOS`, `CODIGO_FUENTE`, `EJECUTABLE_ACTIVO`, `TEMPORAL_CACHE` o `DESCONOCIDO`. Aplicar:
+## Reglas de extracción
 
-- Fuente primaria: JSONL + Markdown + SHA-256.
-- Auxiliar o derivado: JSONL + SHA-256; Markdown solo con contenido humano útil.
-- Respaldo/copia exacta: SHA-256; no repetir extracción.
-- Temporal/caché: ningún derivado; incluir solo en el reporte de campaña.
-- Ejecutable/activo: JSONL estático + SHA-256; nunca ejecutar ni generar explicación basada en ejecución.
-- Contenedor: JSONL con inventario + SHA-256; no extraer/ejecutar miembros.
+- Calcular SHA-256 antes y después del procesamiento.
+- Extraer estáticamente; no ejecutar macros, scripts, binarios, instaladores, consultas ni miembros activos.
+- Generar JSONL canónico antes del Markdown.
+- Generar Markdown únicamente desde el JSONL validado.
+- Generar JSON-LD como exportación portable, no como grafo operativo único.
+- Registrar calidad, advertencias, procedencia, formato, rol y limitaciones.
+- No resumir en lugar de extraer; agregar el resumen como capa adicional.
+- Registrar `NO_EXTRAIDO`, `EXTRACCION_PARCIAL`, `ARCHIVO_PROTEGIDO`, `CONTENIDO_ACTIVO_NO_EJECUTADO` u otra limitación verificable.
 
-No asociar por similitud. Para manifestaciones, exigir nombre base exacto y evidencia suficiente; si solo coincide el nombre, registrar relación posible, no fusionar. Para familias técnicas, distinguir principal, exportaciones, auxiliares, respaldos y temporales con evidencia y estado de relación.
+## Publicación segura
 
-## Flujo lateral obligatorio
+1. Construir en una zona temporal hermana.
+2. Validar estructura, JSON/JSONL/JSON-LD, hashes y correspondencia con la fuente.
+3. Confirmar que el original conserva tamaño y SHA-256.
+4. Publicar atómicamente solo los derivados administrados.
+5. Restaurar la salida anterior ante fallo.
+6. Mantener paquetes anteriores cuando cambie el fingerprint.
+7. Actualizar `99_CONTROL/MANIFEST.jsonl`, `EVENTOS.jsonl` y `CHECKSUMS.sha256` en modo central.
 
-```text
-original → inspección solo lectura → SHA-256 → formato real → rol
-→ extracción determinista → una intervención IA opcional por archivo/campaña
-→ un JSONL → validación → Markdown desde JSONL → SHA-256 final
-→ verificación del original → publicación lateral atómica → reporte
-```
+## Validación
 
-Python obtiene hechos objetivos, detecta contenido activo sin ejecutarlo, valida cada línea JSONL, genera el Markdown desde el JSONL validado, escribe SHA-256 y compara el hash original antes/después. La IA solo comprende, redacta descripciones corta/breve/larga, propone sinónimos, palabras clave, entidades y relaciones, y genera la vista humana; no sustituye hechos deterministas. Cuando esté disponible, consolidar su única intervención en un archivo temporal de enriquecimiento por campaña y pasarlo con `--ai-enrichment`; si no está disponible, registrar `IA_NO_APLICADA`, sin inventar.
+Ejecutar la suite completa, la validación de la skill y una prueba representativa de cada modo. No declarar éxito sin confirmar `originales_modificados: false` y sin comprobar que solo existen los prefijos altos reservados.
 
-Conservar rutas universales independientes del formato: `source_metadata.source_size_bytes` para tamaño, `integrity.source_sha256` para hash, `summary.short_description|brief_description|long_description|synonyms` para descripciones y sinónimos, y `keywords.values` para palabras clave. Repetir nombre, tamaño y hash con las mismas etiquetas en el frontmatter Markdown y como comentarios `# clave:` del `.sha256`; validar que coincidan. Consultar el mapeo completo en `references/contrato-jsonl-lateral.md`.
+## Límites
 
-El JSONL es la fuente canónica extraída; el Markdown es una vista breve regenerada únicamente desde él; el original conserva autoridad sobre bits, formato, geometría, fórmulas, macros, capas, audio, video, código y comportamiento. Registrar toda limitación con códigos explícitos como `NO_EXTRAIDO`, `ARCHIVO_PROTEGIDO`, `MACRO_NO_EJECUTADA`, `GEOMETRIA_NO_REPRESENTADA`, `CONTENIDO_ACTIVO_NO_EJECUTADO`, `FORMATO_NO_SOPORTADO_COMPLETAMENTE`, `METADATO_NO_CONFIABLE` o `EXTRACCION_PARCIAL`.
-
-## Validación y cierre
-
-En ambos modos:
-
-1. No ejecutar macros, scripts, binarios, instaladores ni miembros activos.
-2. Comparar tamaño/hash de cada original antes y después.
-3. No publicar salida parcial o vacía.
-4. Validar JSON/JSON-LD o cada línea JSONL, estructura, hashes, trazabilidad y correspondencia con la fuente.
-5. Generar Markdown después de validar la representación canónica y solo con datos presentes en ella.
-6. Publicar mediante zona temporal y reemplazo atómico de derivados administrados; restaurar derivados anteriores ante fallo.
-7. Reportar modo, versión, roles, advertencias, limitaciones y confirmar expresamente `originales_modificados: false`.
-
-Ejecutar la suite completa y `quick_validate.py` después de modificar la skill. No declarar éxito sin pruebas de ambos modos.
+- Mantener el original como autoridad.
+- No mezclar derivados entre proyectos, áreas o niveles de acceso.
+- No utilizar una carpeta `80_LENGUAJE_HUMANO_MAQUINA` como fuente.
+- No crear SQLite por archivo ni dentro de la carpeta 80; usar un catálogo operativo externo y reconstruible.
+- No editar cachés instaladas como si fueran la fuente canónica.

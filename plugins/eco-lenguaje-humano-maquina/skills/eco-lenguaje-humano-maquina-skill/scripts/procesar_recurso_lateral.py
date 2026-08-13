@@ -16,6 +16,7 @@ import sqlite3
 import subprocess
 import tarfile
 import tempfile
+import wave
 import zipfile
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -27,10 +28,10 @@ from urllib.parse import quote
 from xml.etree import ElementTree as ET
 
 SKILL_NAME = "Lenguaje Humano–Máquina"
-SKILL_VERSION = "0.4.1"
+SKILL_VERSION = "0.5.0-beta.1"
 SCHEMA_NAME = "lenguaje_humano_maquina"
 SCHEMA_VERSION = 2
-PROCESSING_MODE = "RECURSO_UNICO_LATERAL"
+PROCESSING_MODE = "RECURSO_PORTABLE_LATERAL"
 OUTPUT_80 = "80_LENGUAJE_HUMANO_MAQUINA"
 MAX_TEXT_CHARS = 5_000_000
 MAX_ARCHIVE_MEMBERS = 100_000
@@ -467,7 +468,25 @@ def extract_media(path: Path, kind: str) -> tuple[list[dict[str, Any]], str, dic
         for index, stream in enumerate(metadata.get("streams", [])):
             records.append({"record_type": f"{kind}_segment", "segment_number": index + 1, "stream_metadata": json_safe(stream)})
     except Exception as exc:
-        warnings.append(warning("EXTRACCION_PARCIAL", f"No fue posible obtener metadatos multimedia: {type(exc).__name__}."))
+        if kind == "audio" and path.suffix.lower() == ".wav":
+            try:
+                with wave.open(str(path), "rb") as audio:
+                    frames = audio.getnframes()
+                    rate = audio.getframerate()
+                    stream = {
+                        "codec_name": "pcm",
+                        "channels": audio.getnchannels(),
+                        "sample_rate": rate,
+                        "sample_width_bytes": audio.getsampwidth(),
+                        "frame_count": frames,
+                        "duration_seconds": frames / rate if rate else 0,
+                    }
+                records.append({"record_type": "audio_segment", "segment_number": 1, "stream_metadata": stream})
+                metadata = {"streams": [stream], "format": {"duration": stream["duration_seconds"]}}
+            except Exception as fallback_exc:
+                warnings.append(warning("EXTRACCION_PARCIAL", f"No fue posible obtener metadatos multimedia: {type(fallback_exc).__name__}."))
+        else:
+            warnings.append(warning("EXTRACCION_PARCIAL", f"No fue posible obtener metadatos multimedia: {type(exc).__name__}."))
     warnings.append(warning("NO_EXTRAIDO", "No se generó transcripción; se conserva como limitación explícita.", "BAJO"))
     format_data = metadata.get("format", {})
     metrics = {
@@ -828,6 +847,8 @@ def build_records(
     role_basis: str,
     relations: list[dict[str, Any]] | None = None,
     enrichment: dict[str, Any] | None = None,
+    processing_mode: str = PROCESSING_MODE,
+    processing_metadata: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     source_hash = sha256_file(path)
     stat = path.stat()
@@ -850,8 +871,9 @@ def build_records(
         "source_filename": path.name, "source_relative_path": source_metadata["source_relative_path"],
         "generated_at": generated_at,
         "generated_by": f"{SKILL_NAME} {SKILL_VERSION}" + (" + IA_UNICA" if ai_applied else ""),
-        "processing_mode": PROCESSING_MODE,
+        "processing_mode": processing_mode,
     }
+    manifest.update(json_safe(processing_metadata or {}))
     integrity = {"record_type": "integrity", "algorithm": "SHA-256", "source_sha256": source_hash, "source_size_bytes": stat.st_size}
     role_record = {"record_type": "file_role", "role": role, "basis": role_basis, "classification_is_final": False}
     format_record = {"record_type": "format_information", **detected, **json_safe(technical_metadata)}
@@ -962,7 +984,11 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return records
 
 
-def validate_jsonl(path: Path, source: Path) -> list[dict[str, Any]]:
+def validate_jsonl(
+    path: Path,
+    source: Path,
+    expected_mode: str = PROCESSING_MODE,
+) -> list[dict[str, Any]]:
     if not path.is_file() or path.stat().st_size == 0:
         raise ValueError(f"JSONL ausente o vacío: {path}")
     records = read_jsonl(path)
@@ -996,10 +1022,10 @@ def validate_jsonl(path: Path, source: Path) -> list[dict[str, Any]]:
     if (
         manifest.get("schema_name") != SCHEMA_NAME
         or manifest.get("schema_version") != SCHEMA_VERSION
-        or manifest.get("processing_mode") != PROCESSING_MODE
+        or manifest.get("processing_mode") != expected_mode
         or manifest.get("source_filename") != source.name
     ):
-        raise ValueError("Manifest no corresponde al modo lateral o a la fuente.")
+        raise ValueError("Manifest no corresponde al modo esperado o a la fuente.")
     if (
         integrity.get("algorithm") != "SHA-256"
         or not SHA256_RE.fullmatch(str(integrity.get("source_sha256", "")))

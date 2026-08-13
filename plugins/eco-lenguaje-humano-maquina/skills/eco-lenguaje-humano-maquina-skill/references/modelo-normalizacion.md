@@ -4,7 +4,9 @@ Los originales conservan autoridad sobre bits y comportamiento. Los derivados si
 
 En modo controlado, Markdown/HTML, JSON canónico, JSON-LD y controles viven en `80_LENGUAJE_HUMANO_MAQUINA`. Obsidian y Graphiti consumen derivados con procedencia por archivo, revisión y localizador.
 
-En modo lateral, JSONL es la fuente canónica extraída, Markdown es una vista humana breve generada desde JSONL y `.sha256` identifica la manifestación exacta. No crear Graphiti, embeddings, bases ni clasificación; conservar datos para esas etapas posteriores.
+En modo centralizado, los originales permanecen en sus carpetas de trabajo y todos los derivados del proyecto o área viven en su única `80_LENGUAJE_HUMANO_MAQUINA`, separados por SHA-256 y fingerprint. `99_CONTROL` mantiene manifiestos, eventos y comprobaciones.
+
+En modo portable lateral, JSONL es la fuente canónica extraída, Markdown es una vista humana breve generada desde JSONL y `.sha256` identifica la manifestación exacta. No crear embeddings, bases ni clasificación; conservar datos para esas etapas posteriores.
 
 Separar siempre revisión documental, versión técnica de la skill, rol operativo, estado de extracción, derechos observados y permisos. No afirmar derechos, autoría, identidad, relaciones o metadatos no verificados.
 
