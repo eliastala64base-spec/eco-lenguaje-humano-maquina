@@ -1,7 +1,10 @@
 {
   "name": "eco-lenguaje-humano-maquina",
-  "version": "0.4.1",
-  "description": "Genera representaciones humanas y de máquina trazables sin modificar los originales.",
+  "version": "0.5.0-beta.1",
+  "description": "Centraliza representaciones humanas y de máquina trazables sin modificar los originales.",
+  "author": {
+    "name": "ECOSISTEMA-VIRTUAL"
+  },
   "keywords": [
     "documentos",
     "jsonl",
@@ -13,8 +16,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Lenguaje Humano–Máquina",
-    "shortDescription": "Derivados humanos y JSONL sin tocar originales",
-    "longDescription": "Procesa documentos propios con revisiones o recursos únicos y externos mediante inspección segura, JSONL, Markdown y SHA-256.",
+    "shortDescription": "Derivados centralizados sin tocar originales",
+    "longDescription": "Procesa documentos controlados y recursos de proyecto mediante una carpeta 80 reservada, JSONL, Markdown, JSON-LD, SHA-256 y fingerprint reproducible.",
     "developerName": "ECOSISTEMA-VIRTUAL",
     "category": "Productivity",
     "capabilities": [
@@ -22,8 +25,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Procesa esta carpeta con Lenguaje Humano–Máquina después de una prevalidación en seco.",
-      "Procesa este archivo en modo RECURSO_UNICO_LATERAL sin modificar el original."
+      "Procesa este proyecto en modo RECURSO_CENTRALIZADO después de una prevalidación en seco.",
+      "Procesa este documento revisionado en modo DOCUMENTO_CONTROLADO sin modificar los originales."
     ],
     "composerIcon": "./assets/icon.svg",
     "logo": "./assets/icon.svg"

@@ -1,39 +1,37 @@
-# Lenguaje Humano–Máquina
+# ECO Lenguaje Humano–Máquina
 
-Repositorio distribuible de la skill `eco-lenguaje-humano-maquina-skill`, versión `0.4.1`, empaquetada como plugin de ChatGPT y Codex.
+Plugin distribuible de la skill `eco-lenguaje-humano-maquina-skill`, versión `0.5.0-beta.1`.
 
-## Contenido
+Convierte fuentes autorizadas en representaciones trazables para personas y máquinas sin modificar los originales.
 
-- `.agents/plugins/marketplace.json`: catálogo del repositorio.
-- `plugins/eco-lenguaje-humano-maquina/.codex-plugin/plugin.json`: manifiesto instalable.
-- `plugins/eco-lenguaje-humano-maquina/skills/eco-lenguaje-humano-maquina-skill/`: skill completa, incluidos scripts, referencias, esquemas y pruebas.
+## Modos
 
-## Publicar en GitHub
+- `DOCUMENTO_CONTROLADO`: documentos propios con revisiones `Rev.*`.
+- `RECURSO_CENTRALIZADO`: modo predeterminado de proyectos y áreas; conserva todos los derivados en `80_LENGUAJE_HUMANO_MAQUINA`.
+- `RECURSO_PORTABLE_LATERAL`: excepción solicitada para llevar JSONL, Markdown y SHA-256 junto al original.
 
-1. Crear un repositorio privado vacío en GitHub.
-2. Subir el contenido de esta carpeta a la raíz del repositorio.
-3. Usar la rama `main`.
-4. No agregar documentos originales, credenciales, archivos procesados ni derivados de proyectos.
+Los alias `REVISION_CONTROLADA_80` y `RECURSO_UNICO_LATERAL` se aceptan temporalmente por compatibilidad.
 
-## Agregar el catálogo en Codex
+## Principios
 
-Desde una sesión con acceso al repositorio:
+- `80_LENGUAJE_HUMANO_MAQUINA` y `99_CONTROL` son nombres reservados.
+- SHA-256 identifica los bytes del original.
+- El fingerprint incorpora versión de skill, esquema, extractor, configuración y enriquecimiento.
+- Un SHA y fingerprint vigentes evitan reprocesamiento.
+- Un cambio de fuente o procesamiento genera un paquete nuevo y conserva el anterior.
+- JSONL es canónico; Markdown y JSON-LD son vistas derivadas.
+- SQLite no se crea por archivo ni dentro de la carpeta 80.
 
-```text
-codex plugin marketplace add USUARIO/REPOSITORIO --ref main
-```
-
-Después, abrir **Plugins**, seleccionar el catálogo **ecosistema-virtual** e instalar **Lenguaje Humano–Máquina**. Iniciar un chat nuevo y seleccionar la skill con `@` en ChatGPT Work o con `$` en Codex.
-
-## Uso inicial recomendado
+## Ejecución
 
 ```text
-Usa Lenguaje Humano–Máquina.
-
-Ruta objetivo: [RUTA]
-Modo: RECURSO_UNICO_LATERAL
-
-Ejecuta primero la prevalidación en seco. Continúa únicamente si el estado es APROBADO. No modifiques, muevas ni renombres los originales.
+python plugins/eco-lenguaje-humano-maquina/skills/eco-lenguaje-humano-maquina-skill/scripts/convertir_lenguaje_humano_maquina.py RUTA --mode RECURSO_CENTRALIZADO --dry-run
 ```
 
-Para documentación propia con revisiones, sustituir el modo por `REVISION_CONTROLADA_80`.
+Después de revisar el plan:
+
+```text
+python plugins/eco-lenguaje-humano-maquina/skills/eco-lenguaje-humano-maquina-skill/scripts/convertir_lenguaje_humano_maquina.py RUTA --mode RECURSO_CENTRALIZADO
+```
+
+La skill, scripts, referencias, esquemas y pruebas viven dentro del plugin. El repositorio no almacena originales ni derivados procesados de usuarios.

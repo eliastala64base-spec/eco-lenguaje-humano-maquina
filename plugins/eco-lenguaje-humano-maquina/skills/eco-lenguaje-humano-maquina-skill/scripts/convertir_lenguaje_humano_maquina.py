@@ -19,10 +19,13 @@ from typing import Any
 from xml.etree import ElementTree as ET
 
 SKILL_NAME = "Lenguaje Humano‚ÄìM√°quina"
-SKILL_VERSION = "0.4.1"
+SKILL_VERSION = "0.5.0-beta.1"
 OUTPUT_NAME = "80_LENGUAJE_HUMANO_MAQUINA"
-MODE_CONTROLLED = "REVISION_CONTROLADA_80"
-MODE_LATERAL = "RECURSO_UNICO_LATERAL"
+MODE_CONTROLLED = "DOCUMENTO_CONTROLADO"
+MODE_CENTRAL = "RECURSO_CENTRALIZADO"
+MODE_LATERAL = "RECURSO_PORTABLE_LATERAL"
+MODE_CONTROLLED_LEGACY = "REVISION_CONTROLADA_80"
+MODE_LATERAL_LEGACY = "RECURSO_UNICO_LATERAL"
 REV_RE = re.compile(r"^rev(?:ision)?[._ -]*(?P<v>[A-Z]|\d{1,3})$", re.I)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
@@ -54,12 +57,12 @@ UNIT_FILES = (
     "01_VISTA_DOCUMENTO.html",
     "02_RECURSO_CANONICO.json",
     "03_RELACIONES_GRAPHITI.jsonld",
-    "90_CONTROL_DOCUMENTO/manifiesto.json",
-    "90_CONTROL_DOCUMENTO/fuentes_asociadas.json",
-    "90_CONTROL_DOCUMENTO/calidad_extraccion.json",
-    "90_CONTROL_DOCUMENTO/checksums.sha256",
+    "99_CONTROL/manifiesto.json",
+    "99_CONTROL/fuentes_asociadas.json",
+    "99_CONTROL/calidad_extraccion.json",
+    "99_CONTROL/checksums.sha256",
 )
-RESERVED_TOP_LEVEL = {"90_control_tecnico"}
+RESERVED_TOP_LEVEL = {"99_control"}
 
 
 def utc_now() -> str:
@@ -127,21 +130,24 @@ def direct_output(root: Path) -> Path:
 
 def detect_execution_mode(path: Path, requested: str) -> str:
     """Resolver el modo sin inferir autor√≠a a partir del formato o del nombre del archivo."""
+    requested = {
+        MODE_CONTROLLED_LEGACY: MODE_CONTROLLED,
+        MODE_LATERAL_LEGACY: MODE_LATERAL,
+    }.get(requested, requested)
     if requested != "AUTO":
         return requested
-    ancestors = {part.casefold() for part in path.resolve().parts}
-    if "02_proyectos_independientes" in ancestors:
-        return MODE_LATERAL
-    if "03_proyectos_dependientes" in ancestors:
-        return MODE_CONTROLLED
     if path.is_dir() and any(
         child.is_dir() and not child.is_symlink() and REV_RE.fullmatch(child.name)
         for child in path.iterdir()
     ):
         return MODE_CONTROLLED
+    ancestors = {part.casefold() for part in path.resolve().parts}
+    if {"02_proyectos_independientes", "03_proyectos_dependientes"}.intersection(ancestors):
+        return MODE_CENTRAL
     raise ValueError(
-        "Modo ambiguo: indique --mode REVISION_CONTROLADA_80 o "
-        "--mode RECURSO_UNICO_LATERAL. La ausencia de revisiones no demuestra que un recurso sea externo."
+        "Modo ambiguo: indique --mode DOCUMENTO_CONTROLADO, "
+        "--mode RECURSO_CENTRALIZADO o --mode RECURSO_PORTABLE_LATERAL. "
+        "La ausencia de revisiones no demuestra que un recurso sea externo."
     )
 
 
@@ -344,7 +350,7 @@ def build_document(unit_dir: Path, scope: str, base: str, records: list[dict[str
     revision = canonical_revision(selected)
     primary = selected.get(revision)
     media = unit_dir / "04_MEDIA_DERIVADA"
-    control = unit_dir / "90_CONTROL_DOCUMENTO"
+    control = unit_dir / "99_CONTROL"
     media.mkdir(parents=True)
     control.mkdir(parents=True)
     source_warnings = [
@@ -352,44 +358,7 @@ def build_document(unit_dir: Path, scope: str, base: str, records: list[dict[str
         for record in records
         for warning in record["advertencias_de_lectura"]
     ]
-    quality = {"errores_criticos": [], "advertencias": [*warnings, *source_warnings], "revision_canonica": revision,
-               "fuentes_principales_por_revision": {key: value["nombre_archivo"] for key, value in selected.items()},
-               "fuentes_legibles": len(selected), "fuentes_total": len(records)}
-    public_records = [public_source_record(record) for record in records]
-    resource = {"schema_version": 3, "identidad": {"nombre_base_exacto": base, "contexto_logico": scope},
-                "control_revision": {"revision_canonica": revision, "por_revision": {key: value["nombre_archivo"] for key, value in selected.items()}},
-                "fuentes": public_records, "contenido": {"fuente_principal": primary["nombre_archivo"] if primary else None,
-                "texto": primary.get("_texto_extraido", "") if primary else ""},
-                "procesamiento": {"skill": SKILL_NAME, "version": SKILL_VERSION, "generado_en": utc_now(), "originales_modificados": False}, "calidad": quality}
-    md = ["---", f"nombre_base_exacto: {json.dumps(base, ensure_ascii=False)}", f"revision_canonica: {json.dumps(revision)}", "estado: DERIVADO_GENERADO", "---", "", f"# {base}", "", "> Derivado navegable. Los originales son la autoridad.", "", "## Fuente principal", "", f"- Revisi√≥n: `{revision}`", f"- Archivo: `{primary['nombre_archivo'] if primary else 'NINGUNA_FUENTE_LEGIBLE'}`", "", "## Contenido", "", resource["contenido"]["texto"] or "*Sin extracci√≥n textual verificable; revise la fuente original y los controles.*", "", "## Trazabilidad", "", "- [Recurso can√≥nico](02_RECURSO_CANONICO.json)", "- [Relaciones Graphiti](03_RELACIONES_GRAPHITI.jsonld)", "- [Fuentes asociadas](90_CONTROL_DOCUMENTO/fuentes_asociadas.json)"]
-    markdown = "\n".join(md) + "\n"
-    (unit_dir / "00_DOCUMENTO.md").write_text(markdown, encoding="utf-8")
-    (unit_dir / "01_VISTA_DOCUMENTO.html").write_text("<!doctype html><meta charset='utf-8'><title>" + escape(base) + "</title><pre>" + escape(markdown) + "</pre>", encoding="utf-8")
-    write_json(unit_dir / "02_RECURSO_CANONICO.json", resource)
-    source_nodes = [
-        {
-            "@id": (
-                "urn:eco:fuente:"
-                + hashlib.sha256(
-                    (
-                        record["hash"]
-                        + "|"
-                        + record["ruta_relativa"]
-                        + "|"
-                        + record["revision_detectada"]
-                    ).encode()
-                ).hexdigest()
-            ),
-            "@type": "eco:FuenteDocumental",
-            "eco:sha256": record["hash"],
-            "eco:rutaRelativa": record["ruta_relativa"],
-            "eco:nombreArchivo": record["nombre_archivo"],
-            "eco:revisionDetectada": record["revision_detectada"],
-            "eco:rol": record["rol"],
-        }
-        for record in public_records
-    ]
-    graph = {
+    qua˜Ω≠¢Gß≤⁄Óù∆≠y–graph = {
         "@context": {
             "eco": "https://ecosistema.local/vocab/",
             "prov": "http://www.w3.org/ns/prov#",
@@ -416,7 +385,7 @@ def build_document(unit_dir: Path, scope: str, base: str, records: list[dict[str
 
 
 def validate_checksums(unit_dir: Path) -> None:
-    checksum_file = unit_dir / "90_CONTROL_DOCUMENTO" / "checksums.sha256"
+    checksum_file = unit_dir / "99_CONTROL" / "checksums.sha256"
     declared: dict[str, str] = {}
     for line in checksum_file.read_text(encoding="utf-8").splitlines():
         digest, separator, relative = line.partition("  ")
@@ -445,7 +414,7 @@ def validate_traceability(unit_dir: Path) -> list[dict[str, Any]]:
     if not required_resource.issubset(resource):
         raise ValueError(f"Recurso can√≥nico incompleto en {unit_dir}")
     records = json.loads(
-        (unit_dir / "90_CONTROL_DOCUMENTO" / "fuentes_asociadas.json").read_text(encoding="utf-8")
+        (unit_dir / "99_CONTROL" / "fuentes_asociadas.json").read_text(encoding="utf-8")
     )
     if not records or records != resource["fuentes"]:
         raise ValueError(f"Trazabilidad de fuentes incompleta o inconsistente en {unit_dir}")
@@ -465,12 +434,12 @@ def validate_traceability(unit_dir: Path) -> list[dict[str, Any]]:
     if not isinstance(graph.get("@graph"), list) or not graph["@graph"]:
         raise ValueError(f"JSON-LD sin grafo verificable en {unit_dir}")
     manifest = json.loads(
-        (unit_dir / "90_CONTROL_DOCUMENTO" / "manifiesto.json").read_text(encoding="utf-8")
+        (unit_dir / "99_CONTROL" / "manifiesto.json").read_text(encoding="utf-8")
     )
     if manifest.get("originales_modificados") is not False or manifest.get("fuentes") != records:
         raise ValueError(f"Manifiesto inconsistente en {unit_dir}")
     quality = json.loads(
-        (unit_dir / "90_CONTROL_DOCUMENTO" / "calidad_extraccion.json").read_text(encoding="utf-8")
+        (unit_dir / "99_CONTROL" / "calidad_extraccion.json").read_text(encoding="utf-8")
     )
     if quality != resource["calidad"]:
         raise ValueError(f"Control de calidad inconsistente en {unit_dir}")
@@ -496,9 +465,9 @@ def validate_output(temp: Path, expected_units: int, forced_failure: bool = Fals
     if prevalidation.get("estado") != "APROBADO":
         raise ValueError("La salida contiene una prevalidaci√≥n no aprobada.")
     inventory = json.loads(
-        (temp / "90_CONTROL_TECNICO" / "inventario_archivos.json").read_text(encoding="utf-8")
+        (temp / "99_CONTROL" / "inventario_archivos.json").read_text(encoding="utf-8")
     )
-    events = (temp / "90_CONTROL_TECNICO" / "eventos.jsonl").read_text(encoding="utf-8").splitlines()
+    events = (temp / "99_CONTROL" / "eventos.jsonl").read_text(encoding="utf-8").splitlines()
     if not events:
         raise ValueError("El registro de eventos est√° vac√≠o.")
     for event in events:
@@ -506,7 +475,7 @@ def validate_output(temp: Path, expected_units: int, forced_failure: bool = Fals
     traced_records = []
     for unit in units:
         base = unit.parent
-        for directory in ("04_MEDIA_DERIVADA", "90_CONTROL_DOCUMENTO"):
+        for directory in ("04_MEDIA_DERIVADA", "99_CONTROL"):
             if not (base / directory).is_dir():
                 raise ValueError(f"Falta el directorio {directory} en {base}")
         for item in UNIT_FILES[1:]:
@@ -588,7 +557,7 @@ def generate(root: Path, forced_failure: bool = False) -> dict[str, Any]:
             index.append(f"- [{base}]({unit_dir.relative_to(temp_output).as_posix()}/00_DOCUMENTO.md) ‚Äî `{scope}`")
             inventory.extend(public_source_record(record) for record in records)
         (temp_output / "00_INDICE_GENERAL.md").write_text("\n".join(index) + "\n", encoding="utf-8")
-        technical = temp_output / "90_CONTROL_TECNICO"
+        technical = temp_output / "99_CONTROL"
         technical.mkdir()
         write_json(technical / "inventario_archivos.json", inventory)
         (technical / "eventos.jsonl").write_text(
@@ -640,7 +609,10 @@ def main() -> int:
     parser.add_argument("ruta", type=Path)
     parser.add_argument(
         "--mode",
-        choices=("AUTO", MODE_CONTROLLED, MODE_LATERAL),
+        choices=(
+            "AUTO", MODE_CONTROLLED, MODE_CENTRAL, MODE_LATERAL,
+            MODE_CONTROLLED_LEGACY, MODE_LATERAL_LEGACY,
+        ),
         default="AUTO",
         help=(
             "AUTO solo usa marcadores inequ√≠vocos de ECOSISTEMA o revisiones directas; "
@@ -648,6 +620,8 @@ def main() -> int:
         ),
     )
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--output-root", type=Path)
+    parser.add_argument("--configuration-hash", default="DEFAULT")
     parser.add_argument("--ai-enrichment", type=Path)
     parser.add_argument("--force-validation-failure", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
@@ -663,11 +637,26 @@ def main() -> int:
                 if args.dry_run
                 else lateral_process(target, args.ai_enrichment, args.force_validation_failure)
             )
+        elif mode == MODE_CENTRAL:
+            from procesar_recurso_central import dry_run as central_dry_run
+            from procesar_recurso_central import process as central_process
+
+            report = (
+                central_dry_run(target, args.output_root, args.configuration_hash)
+                if args.dry_run
+                else central_process(
+                    target,
+                    args.output_root,
+                    args.ai_enrichment,
+                    args.configuration_hash,
+                    args.force_validation_failure,
+                )
+            )
         else:
             if not target.is_dir():
                 raise NotADirectoryError(target)
             if args.ai_enrichment:
-                raise ValueError("--ai-enrichment solo corresponde al modo RECURSO_UNICO_LATERAL.")
+                raise ValueError("--ai-enrichment solo corresponde a recursos centralizados o portables.")
             report = prevalidate(target) if args.dry_run else generate(target, args.force_validation_failure)
             report["modo"] = MODE_CONTROLLED
     except Exception as exc:
