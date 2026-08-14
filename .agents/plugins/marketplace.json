@@ -12,6 +12,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "generar-panel-fotografico",
+      "source": {
+        "source": "local",
+        "path": "./plugins/generar-panel-fotografico"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

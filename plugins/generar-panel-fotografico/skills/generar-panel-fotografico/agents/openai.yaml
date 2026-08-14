@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generar panel fotográfico"
+  short_description: "Prepara paneles fotográficos trazables"
+  default_prompt: "Usa $generar-panel-fotografico para preparar un panel desde un catálogo y una plantilla sin modificar las fuentes."
