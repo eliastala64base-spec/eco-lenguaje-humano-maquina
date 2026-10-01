@@ -30,13 +30,13 @@ import java.util.concurrent.Executors
 private fun Context.dp(n:Int)=(n*resources.displayMetrics.density).toInt()
 private class Prefs(c:Context){
  private val s=c.getSharedPreferences("stamp",0)
- var a:String get()=s.getString("a","CONTROL DE CALIDAD")!! set(v){s.edit().putString("a",v).apply()}
- var b:String get()=s.getString("b","Control dimensiones de acero de construcción")!! set(v){s.edit().putString("b",v).apply()}
- var text:Int get()=s.getInt("text",32) set(v){s.edit().putInt("text",v).apply()}
- var logo:Int get()=s.getInt("logo",28) set(v){s.edit().putInt("logo",v).apply()}
- var alpha:Int get()=s.getInt("alpha",100) set(v){s.edit().putInt("alpha",v).apply()}
- var time:Boolean get()=s.getBoolean("time",true) set(v){s.edit().putBoolean("time",v).apply()}
- var uri:String? get()=s.getString("uri",null) set(v){s.edit().putString("uri",v).apply()}
+ var a:String\n  get()=s.getString("a","CONTROL DE CALIDAD")!!\n  set(v){s.edit().putString("a",v).apply()}
+ var b:String\n  get()=s.getString("b","Control dimensiones de acero de construcción")!!\n  set(v){s.edit().putString("b",v).apply()}
+ var text:Int\n  get()=s.getInt("text",32)\n  set(v){s.edit().putInt("text",v).apply()}
+ var logo:Int\n  get()=s.getInt("logo",28)\n  set(v){s.edit().putInt("logo",v).apply()}
+ var alpha:Int\n  get()=s.getInt("alpha",100)\n  set(v){s.edit().putInt("alpha",v).apply()}
+ var time:Boolean\n  get()=s.getBoolean("time",true)\n  set(v){s.edit().putBoolean("time",v).apply()}
+ var uri:String?\n  get()=s.getString("uri",null)\n  set(v){s.edit().putString("uri",v).apply()}
 }
 private fun logo(c:Context,u:String?):Bitmap?{
  if(!u.isNullOrBlank()) try{c.contentResolver.openInputStream(Uri.parse(u)).use{return BitmapFactory.decodeStream(it)}}catch(_:Exception){}
